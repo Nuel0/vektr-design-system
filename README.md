@@ -1,108 +1,108 @@
 # Vektr Design System
 
-Official design tokens and multi-theme presets for **Vektr Design System**, exported and compiled directly from Figma Variables.
+Official design tokens, React components, and multi-theme presets for **Vektr Design System**, exported and compiled directly from Figma Variables.
 
 ---
 
 ## 📦 Package Formats Exposed
 
-This package compiles your Vektr Figma Variables across all modes (**Light**, **Dark**, **Fintech**, **Health-tech**, **Hospitality**, **Edtech**) into multi-platform deliverables:
-
 - 🎨 **CSS Variables**: `import 'vektr-design-system/css'`
-- 📦 **JavaScript / TypeScript (ESM & CJS)**: `import tokens, { darkTokens } from 'vektr-design-system'`
+- ⚛️ **React Components**: `import { Button, Card, Badge, Input, VektrProvider, useVektrTheme } from 'vektr-design-system/react'`
+- 📦 **JS / TS Design Tokens**: `import tokens, { darkTokens } from 'vektr-design-system'`
 - 📄 **Normalized JSON**: `import tokens from 'vektr-design-system/json'`
 - 🌊 **Tailwind CSS Preset**: Add to `tailwind.config.js` presets
 
 ---
 
-## 🚀 Usage Guide
+## ⚛️ Reusable React Components
 
-### 1. CSS Variables & Theme Switching
+### 1. Wrap your app with `VektrProvider`
+```tsx
+import React from 'react';
+import 'vektr-design-system/css';
+import { VektrProvider, Button, Card, Badge, Input, useVektrTheme } from 'vektr-design-system/react';
 
-Include the CSS file at your application root:
-
-```css
-@import "vektr-design-system/css";
-```
-
-Use variables in your styles:
-```css
-.card {
-  background-color: var(--surface-base);
-  color: var(--text-primary);
-  border-radius: var(--radius-brand);
-  padding: var(--spacing-brand-padding);
+export function App() {
+  return (
+    <VektrProvider defaultTheme="light" defaultBrand="fintech">
+      <Dashboard />
+    </VektrProvider>
+  );
 }
 ```
 
-#### Dark Mode Activation
-```html
-<html data-theme="dark">
-  <!-- All surface, text, border, status & shadow tokens switch automatically -->
-</html>
+### 2. Use UI Components
+
+#### Button
+```tsx
+<Button variant="primary" size="md">Click Me</Button>
+<Button variant="secondary" size="sm">Secondary</Button>
+<Button variant="danger" isLoading>Processing...</Button>
 ```
 
-#### Brand Theme Activation (Fintech, Health-tech, Hospitality, Edtech)
-```html
-<html data-brand="fintech">
-  <!-- Switches brand colors, typography, gaps, padding & radii to Fintech theme -->
-</html>
+#### Card
+```tsx
+<Card variant="raised">
+  <CardHeader>
+    <h3>Vektr Analytics</h3>
+  </CardHeader>
+  <CardBody>
+    <p>Card content styled with design tokens.</p>
+  </CardBody>
+  <CardFooter>
+    <Button variant="primary">View Details</Button>
+  </CardFooter>
+</Card>
+```
+
+#### Status Badge
+```tsx
+<Badge variant="success">Active</Badge>
+<Badge variant="warning">Pending</Badge>
+<Badge variant="danger">Failed</Badge>
+```
+
+#### Input Field
+```tsx
+<Input 
+  label="Email Address"
+  placeholder="name@company.com"
+  helperText="We'll never share your email."
+/>
+```
+
+#### Dynamic Theme & Sub-Brand Switcher
+```tsx
+function ThemeToggle() {
+  const { theme, toggleTheme, setBrand } = useVektrTheme();
+
+  return (
+    <div>
+      <Button onClick={toggleTheme}>
+        Current Theme: {theme.toUpperCase()}
+      </Button>
+      <Button onClick={() => setBrand('health-tech')}>Switch to Health-Tech</Button>
+    </div>
+  );
+}
 ```
 
 ---
 
-### 2. JavaScript / TypeScript
+## 🔄 Building & Updating Tokens & Components
 
-```typescript
-import tokens, { darkTokens } from 'vektr-design-system';
-
-console.log(tokens.brand.primary); // "#4f46e5"
-console.log(darkTokens.surface.base); // "#0f172a"
+```bash
+# Compile tokens & React components
+npm run build
 ```
 
 ---
 
-### 3. Tailwind CSS Integration
+## 📤 Publishing to NPM / GitHub
 
-In `tailwind.config.js`:
-```javascript
-module.exports = {
-  presets: [require('vektr-design-system/tailwind')],
-  content: ['./src/**/*.{js,ts,jsx,tsx}']
-};
+```bash
+# Push to GitHub
+git add .
+git commit -m "feat: add React reusable components"
+git push origin main
 ```
-
-Then use design token utility classes:
-```html
-<div class="bg-surface-base text-text-primary rounded-radius-brand p-space-4">
-  <button class="bg-brand-primary text-text-inverse hover:bg-brand-primary-hover">
-    Vektr Button
-  </button>
-</div>
-```
-
----
-
-## 🔄 Updating Tokens
-
-When you update variables in Figma:
-1. Export the updated JSON from Figma.
-2. Replace [`tokens.json`](file:///Users/MACBOOKPRO/Desktop/figma-design-tokens/tokens.json).
-3. Run the build script:
-   ```bash
-   npm run build
-   ```
-
----
-
-## 📤 Publishing to NPM
-
-1. Login to npm:
-   ```bash
-   npm login
-   ```
-2. Publish:
-   ```bash
-   npm publish --access public
-   ```
-   *(Or run `npm pack` to inspect `vektr-design-system-1.0.0.tgz` before publishing).*

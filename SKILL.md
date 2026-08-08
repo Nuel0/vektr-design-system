@@ -1,14 +1,14 @@
 ---
 name: vektr-design-system
 description: >-
-  Provides comprehensive guidelines, theme switching workflows, token references, and build instructions
+  Provides comprehensive guidelines, theme switching workflows, token references, React UI component usage, and build instructions
   for the Vektr Design System (`vektr-design-system`). Use this skill whenever building, modifying, or consuming
-  Vektr Design System tokens, CSS variables, TypeScript definitions, or Tailwind CSS presets.
+  Vektr Design System tokens, React components (`vektr-design-system/react`), CSS variables, TypeScript definitions, or Tailwind CSS presets.
 ---
 
 # Vektr Design System Skill
 
-This skill guides the usage, token compilation, and integration of the **Vektr Design System** across web applications and libraries.
+This skill guides the usage, token compilation, React UI components, and integration of the **Vektr Design System** across web applications and libraries.
 
 ---
 
@@ -25,50 +25,27 @@ Vektr Design System is compiled directly from Figma Variables. It exposes **Ligh
 
 ---
 
-## 🚀 How to Consume Tokens in Web Apps
+## ⚛️ Reusable React Components (`vektr-design-system/react`)
 
-### 1. Import CSS Variables
-Import the CSS stylesheet at your app's entry point (`index.js`, `main.tsx`, or `_app.js`):
-
-```css
-@import "vektr-design-system/css";
+### 1. Import Components & CSS
+```tsx
+import 'vektr-design-system/css';
+import { VektrProvider, Button, Card, Badge, Input, useVektrTheme } from 'vektr-design-system/react';
 ```
 
-### 2. Standard CSS Usage
-```css
-.button-primary {
-  background-color: var(--brand-primary);
-  color: var(--text-inverse);
-  padding: var(--spacing-brand-padding);
-  border-radius: var(--radius-brand);
-}
+### 2. Wrap App with `VektrProvider`
+```tsx
+<VektrProvider defaultTheme="light" defaultBrand="fintech">
+  <App />
+</VektrProvider>
 ```
 
-### 3. Theme Switching in HTML/React
-
-```html
-<!-- Enable Dark Theme -->
-<html data-theme="dark">
-
-<!-- Enable Brand Variant -->
-<html data-brand="fintech">
-```
-
-### 4. JavaScript / TypeScript Imports
-```typescript
-import tokens, { darkTokens } from 'vektr-design-system';
-
-const primaryColor = tokens.brand.primary; // "#4f46e5"
-```
-
-### 5. Tailwind CSS Preset
-Add to `tailwind.config.js`:
-```javascript
-module.exports = {
-  presets: [require('vektr-design-system/tailwind')],
-  content: ['./src/**/*.{js,ts,jsx,tsx}']
-};
-```
+### 3. Component Reference
+- **`<Button>`**: `variant="primary|secondary|danger|ghost|outline"`, `size="sm|md|lg"`, `isLoading`, `leftIcon`, `rightIcon`
+- **`<Card>`**: `variant="base|raised|sunken|inverse"`, contains `<CardHeader>`, `<CardBody>`, `<CardFooter>`
+- **`<Badge>`**: `variant="success|warning|danger|info|neutral"`
+- **`<Input>`**: `label`, `helperText`, `errorText`
+- **`useVektrTheme()`**: Hook providing `{ theme, brand, setTheme, setBrand, toggleTheme }`
 
 ---
 
@@ -76,7 +53,7 @@ module.exports = {
 
 1. Export new JSON from Figma.
 2. Replace `tokens.json` in the `vektr-design-system` package.
-3. Run the token compiler:
+3. Run the token & component compiler:
    ```bash
    npm run build
    ```
