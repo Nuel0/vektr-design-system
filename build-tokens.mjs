@@ -32,6 +32,7 @@ function hexToRgba(hex, alpha) {
 function toKebab(str) {
   return str
     .replace(/\//g, '-')
+    .replace(/_/g, '-')
     .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
     .replace(/[^a-zA-Z0-9-]/g, '')
     .toLowerCase();
@@ -66,7 +67,7 @@ async function runBuild() {
         lookup[varName] = { values: {} };
       }
       const val = obj.$value;
-      if (typeof val === 'object' && val !== null && !Array.isArray(val) && !('hex' in val) && !('alias' in val)) {
+      if (typeof val === 'object' && val !== null && !Array.isArray(val) && !('hex' in val) && !('alias' in val) && !('type' in val)) {
         for (const m in val) {
           lookup[varName].values[m] = val[m];
         }
@@ -84,7 +85,22 @@ async function runBuild() {
 
   for (const collectionKey in rawData) {
     if (collectionKey.startsWith('$')) continue;
-    walkTokens(rawData[collectionKey]);
+    const collection = rawData[collectionKey];
+    if (typeof collection === 'object' && collection !== null && collection.variables && typeof collection.variables === 'object') {
+      for (const varName in collection.variables) {
+        const item = collection.variables[varName];
+        if (!lookup[varName]) {
+          lookup[varName] = { values: {} };
+        }
+        if (item && item.values && typeof item.values === 'object') {
+          for (const m in item.values) {
+            lookup[varName].values[m] = item.values[m];
+          }
+        }
+      }
+    } else {
+      walkTokens(collection);
+    }
   }
 
   // Step 2: Resolver function
@@ -110,6 +126,9 @@ async function runBuild() {
     if (val === undefined && item.values['default'] !== undefined) {
       val = item.values['default'];
     }
+    if (val === undefined && item.values['Light'] !== undefined) {
+      val = item.values['Light'];
+    }
     if (val === undefined) {
       const available = Object.keys(item.values);
       if (available.length > 0) val = item.values[available[0]];
@@ -124,14 +143,23 @@ async function runBuild() {
       if (resolvedAlias !== undefined) return resolvedAlias;
     }
 
-    // Object resolution (alias, hex/alpha)
+    // Object resolution (alias, hex/alpha/opacity)
     if (typeof val === 'object' && val !== null) {
+      if (val.type === 'ALIAS' && val.value) {
+        const resolvedAlias = resolveValue(val.value, mode, new Set(visited));
+        if (resolvedAlias !== undefined) return resolvedAlias;
+      }
       if (val.alias) {
         const resolvedAlias = resolveValue(val.alias, mode, new Set(visited));
         if (resolvedAlias !== undefined) return resolvedAlias;
       }
-      if (val.hex !== undefined && val.alpha !== undefined) {
-        return hexToRgba(val.hex, val.alpha);
+      if (typeof val.value === 'string' && lookup[val.value]) {
+        const resolvedAlias = resolveValue(val.value, mode, new Set(visited));
+        if (resolvedAlias !== undefined) return resolvedAlias;
+      }
+      const alphaVal = val.opacity !== undefined ? val.opacity : val.alpha;
+      if (val.hex !== undefined && alphaVal !== undefined) {
+        return hexToRgba(val.hex, alphaVal);
       }
       if (val.hex !== undefined) {
         return val.hex;
@@ -139,6 +167,10 @@ async function runBuild() {
     }
 
     if (typeof val === 'string') {
+      if (lookup[val]) {
+        const resolvedAlias = resolveValue(val, mode, new Set(visited));
+        if (resolvedAlias !== undefined) return resolvedAlias;
+      }
       return parseColor(val);
     }
 

@@ -78,9 +78,9 @@ module.exports = {
   "base": "#FFFFFF",
   "raised": "#F9FAFB",
   "sunken": "#F3F4F6",
-  "subtle": "#F3F4F6",
+  "overlay": "rgba(0, 0, 0, 0.5)",
   "inverse": "#111827",
-  "overlay": "rgba(0, 0, 0, 0.5)"
+  "subtle": "#F3F4F6"
 },
       textColor: {
   "primary": "#111827",
@@ -93,11 +93,11 @@ module.exports = {
   "default": "#E5E7EB",
   "strong": "#D1D5DB",
   "focus": "#4F46E5",
-  "brand-width": "1px",
   "width-thin": "1px",
   "width-default": "1.5px",
   "width-thick": "2px",
-  "width-accent": "3px"
+  "width-accent": "3px",
+  "brand-width": "1px"
 },
       spacing: {
   "1": "4px",
@@ -110,17 +110,21 @@ module.exports = {
   "10": "40px",
   "12": "48px",
   "16": "64px",
-  "20": "80px"
+  "20": "80px",
+  "0-5": "2px",
+  "0-75": "3px",
+  "1-5": "6px",
+  "2-5": "10px"
 },
       borderRadius: {
-  "brand": "8px",
   "none": "0px",
   "sm": "4px",
   "md": "8px",
   "lg": "16px",
   "xl": "40px",
   "xxl": "48px",
-  "full": "9999px"
+  "full": "9999px",
+  "brand": "8px"
 },
       fontSize: {
   "lg": "16px",
