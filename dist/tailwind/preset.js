@@ -4,42 +4,96 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-  "50": "#eef2ff",
-  "100": "#c7d2fe",
-  "200": "#a5b4fc",
-  "300": "#818cf8",
-  "400": "#a5b4fc",
-  "500": "#6366f1",
+  "50": "#f8fafc",
+  "100": "#f1f5f9",
+  "200": "#e2e8f0",
+  "300": "#cbd5e1",
+  "400": "#94a3b8",
+  "500": "#64748b",
   "600": "#4f46e5",
-  "700": "#4338ca",
+  "700": "#334155",
   "800": "#3730a3",
-  "900": "#312e81",
-  "primary": "#4f46e5",
-  "primary-hover": "#4338ca",
-  "primary-active": "#3730a3"
+  "900": "#0f172a",
+  "gray": {
+    "50": "#f9fafb",
+    "100": "#f3f4f6",
+    "200": "#e5e7eb",
+    "300": "#d1d5db",
+    "400": "#9ca3af",
+    "500": "#6b7280",
+    "600": "#4b5563",
+    "700": "#374151",
+    "800": "#1f2937",
+    "900": "#111827"
+  },
+  "slate": {
+    "100": "#f1f5f9",
+    "200": "#e2e8f0",
+    "300": "#cbd5e1",
+    "400": "#94a3b8",
+    "500": "#64748b",
+    "600": "#475569",
+    "700": "#334155",
+    "800": "#1e293b",
+    "900": "#0f172a",
+    "950": "#020617"
+  },
+  "green": {
+    "100": "#dcfce7",
+    "300": "#86efac",
+    "500": "#22c55e",
+    "600": "#16a34a",
+    "800": "#166534",
+    "950": "#052e16"
+  },
+  "red": {
+    "100": "#fee2e2",
+    "300": "#fca5a5",
+    "400": "#ef4444",
+    "600": "#dc2626",
+    "700": "#b91c1c",
+    "800": "#991b1b",
+    "950": "#450a0a"
+  },
+  "amber": {
+    "100": "#fef3c7",
+    "300": "#fcd34d",
+    "500": "#f59e0b",
+    "600": "#d97706",
+    "800": "#92400e",
+    "950": "#451a03"
+  },
+  "blue": {
+    "100": "#dbeafe",
+    "300": "#93c5fd",
+    "500": "#3b82f6",
+    "600": "#2563eb",
+    "800": "#1e40af",
+    "950": "#172554"
+  },
+  "white": "#ffffff",
+  "black": "#000000"
 },
       surface: {
   "base": "#ffffff",
   "raised": "#f9fafb",
   "sunken": "#f3f4f6",
   "subtle": "#f3f4f6",
-  "overlay": "rgba(0,0,0,0.5)",
+  "overlay": "rgba(0, 0, 0, 0.5)",
   "inverse": "#111827"
 },
       textColor: {
   "primary": "#111827",
   "secondary": "#4b5563",
   "muted": "#9ca3af",
-  "disabled": "#d1d5db",
   "inverse": "#ffffff",
-  "contrast": "#000000"
+  "disabled": "#d1d5db"
 },
       borderColor: {
   "default": "#e5e7eb",
   "strong": "#d1d5db",
   "focus": "#4f46e5",
-  "disabled": "#e5e7eb",
-  "brand-width": "1px",
+  "brand-width": "$brand-border",
   "width-thin": "1px",
   "width-default": "1.5px",
   "width-thick": "2px",
@@ -59,7 +113,7 @@ module.exports = {
   "20": "80px"
 },
       borderRadius: {
-  "brand": "8px",
+  "brand": "$brand-radius",
   "none": "0px",
   "sm": "4px",
   "md": "8px",

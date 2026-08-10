@@ -1,5 +1,5 @@
 /**
- * Auto-generated TypeScript definitions for Figma Design Tokens
+ * Auto-generated TypeScript definitions for Vektr Design Tokens (v3.0.0)
  */
 
 export declare const tokens: {
@@ -76,9 +76,8 @@ export declare const tokens: {
     "primary": string;
     "secondary": string;
     "muted": string;
-    "disabled": string;
     "inverse": string;
-    "contrast": string;
+    "disabled": string;
   };
   "action": {
     "primary": string;
@@ -88,31 +87,22 @@ export declare const tokens: {
     "danger-hover": string;
     "danger-active": string;
   };
-  "brand": {
-    "50": string;
-    "100": string;
-    "200": string;
-    "300": string;
-    "400": string;
-    "500": string;
-    "600": string;
-    "700": string;
-    "800": string;
-    "900": string;
-    "primary": string;
-    "primary-hover": string;
-    "primary-active": string;
-  };
   "border": {
     "default": string;
     "strong": string;
     "focus": string;
-    "disabled": string;
     "brand-width": string;
     "width-thin": string;
     "width-default": string;
     "width-thick": string;
     "width-accent": string;
+  };
+  "icon": {
+    "subtle": string;
+    "sm": string;
+    "md": string;
+    "lg": string;
+    "xl": string;
   };
   "status": {
     "success": string;
@@ -128,23 +118,24 @@ export declare const tokens: {
     "info-bg": string;
     "info-text": string;
   };
-  "icon": {
-    "default": string;
-    "muted": string;
-    "inverse": string;
-    "disabled": string;
-    "subtle": string;
-    "sm": string;
-    "md": string;
-    "lg": string;
-    "xl": string;
-  };
   "shadow": {
     "color-sm": string;
     "color-md": string;
     "color-lg": string;
     "brand-blur": string;
     "brand-y": string;
+  };
+  "brand": {
+    "50": string;
+    "100": string;
+    "200": string;
+    "300": string;
+    "400": string;
+    "500": string;
+    "600": string;
+    "700": string;
+    "800": string;
+    "900": string;
   };
   "neutral": {
     "50": string;
@@ -315,9 +306,8 @@ export declare const darkTokens: {
     "primary": string;
     "secondary": string;
     "muted": string;
-    "disabled": string;
     "inverse": string;
-    "contrast": string;
+    "disabled": string;
   };
   "action": {
     "primary": string;
@@ -327,31 +317,22 @@ export declare const darkTokens: {
     "danger-hover": string;
     "danger-active": string;
   };
-  "brand": {
-    "50": string;
-    "100": string;
-    "200": string;
-    "300": string;
-    "400": string;
-    "500": string;
-    "600": string;
-    "700": string;
-    "800": string;
-    "900": string;
-    "primary": string;
-    "primary-hover": string;
-    "primary-active": string;
-  };
   "border": {
     "default": string;
     "strong": string;
     "focus": string;
-    "disabled": string;
     "brand-width": string;
     "width-thin": string;
     "width-default": string;
     "width-thick": string;
     "width-accent": string;
+  };
+  "icon": {
+    "subtle": string;
+    "sm": string;
+    "md": string;
+    "lg": string;
+    "xl": string;
   };
   "status": {
     "success": string;
@@ -367,23 +348,24 @@ export declare const darkTokens: {
     "info-bg": string;
     "info-text": string;
   };
-  "icon": {
-    "default": string;
-    "muted": string;
-    "inverse": string;
-    "disabled": string;
-    "subtle": string;
-    "sm": string;
-    "md": string;
-    "lg": string;
-    "xl": string;
-  };
   "shadow": {
     "color-sm": string;
     "color-md": string;
     "color-lg": string;
     "brand-blur": string;
     "brand-y": string;
+  };
+  "brand": {
+    "50": string;
+    "100": string;
+    "200": string;
+    "300": string;
+    "400": string;
+    "500": string;
+    "600": string;
+    "700": string;
+    "800": string;
+    "900": string;
   };
   "neutral": {
     "50": string;

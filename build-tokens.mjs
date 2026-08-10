@@ -6,7 +6,6 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Helper to convert hex + alpha to rgba string
 function hexToRgba(hex, alpha) {
   let c = hex.replace('#', '');
   if (c.length === 3) {
@@ -19,7 +18,6 @@ function hexToRgba(hex, alpha) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-// Convert camelCase or slash/path to clean kebab-case key
 function toKebab(str) {
   return str
     .replace(/\//g, '-')
@@ -28,7 +26,6 @@ function toKebab(str) {
     .toLowerCase();
 }
 
-// Convert slash/path to nested JS object structure
 function setDeep(obj, pathArray, value) {
   let current = obj;
   for (let i = 0; i < pathArray.length - 1; i++) {
@@ -46,76 +43,91 @@ async function runBuild() {
   const figmaJsonPath = path.join(__dirname, 'tokens.json');
   const rawData = JSON.parse(fs.readFileSync(figmaJsonPath, 'utf8'));
 
-  // Step 1: Create global variable lookup table
-  // lookup[varName] = { type, values: { [mode]: value } }
+  // Step 1: Normalize all variables into a lookup index
   const lookup = {};
-  const collections = rawData.collections || rawData;
 
-  for (const collectionKey in collections) {
-    const collection = collections[collectionKey];
-    if (!collection || !collection.variables) continue;
+  for (const collectionKey in rawData) {
+    if (collectionKey.startsWith('$')) continue;
 
-    for (const varName in collection.variables) {
-      const v = collection.variables[varName];
-      let values = {};
-      let type = undefined;
+    const collection = rawData[collectionKey];
+    if (typeof collection !== 'object' || collection === null) continue;
 
-      if (v !== null && typeof v === 'object' && ('values' in v || 'type' in v)) {
-        type = v.type;
-        values = v.values || {};
-      } else if (v !== null && typeof v === 'object') {
-        values = v;
-      } else {
-        values = { Default: v };
+    const varsObj = collection.variables || collection;
+
+    for (const varName in varsObj) {
+      if (varName.startsWith('$')) continue;
+
+      const item = varsObj[varName];
+      if (!lookup[varName]) {
+        lookup[varName] = { values: {} };
       }
 
-      lookup[varName] = { type, values };
+      if (typeof item === 'object' && item !== null && !Array.isArray(item)) {
+        if ('values' in item && typeof item.values === 'object') {
+          for (const m in item.values) {
+            lookup[varName].values[m] = item.values[m];
+          }
+        } else if ('hex' in item || 'alias' in item || 'value' in item) {
+          lookup[varName].values['Default'] = item;
+        } else {
+          for (const m in item) {
+            lookup[varName].values[m] = item[m];
+          }
+        }
+      } else {
+        lookup[varName].values['Default'] = item;
+      }
     }
   }
 
   // Step 2: Resolver function
   function resolveValue(varName, mode, visited = new Set()) {
-    if (visited.has(varName)) {
-      console.warn(`Circular alias detected for ${varName}`);
-      return undefined;
-    }
+    if (visited.has(varName)) return undefined;
     visited.add(varName);
 
     const item = lookup[varName];
     if (!item) return varName;
 
-    // Determine value for requested mode, falling back to 'Default' or first available mode
-    let val = item.values[mode];
+    let val;
+    const normMode = mode.toLowerCase();
+    for (const m in item.values) {
+      if (m.toLowerCase() === normMode) {
+        val = item.values[m];
+        break;
+      }
+    }
+
     if (val === undefined && item.values['Default'] !== undefined) {
       val = item.values['Default'];
     }
+    if (val === undefined && item.values['default'] !== undefined) {
+      val = item.values['default'];
+    }
     if (val === undefined) {
-      const availableModes = Object.keys(item.values);
-      if (availableModes.length > 0) {
-        val = item.values[availableModes[0]];
-      }
+      const available = Object.keys(item.values);
+      if (available.length > 0) val = item.values[available[0]];
     }
 
     if (val === undefined) return undefined;
 
-    // Process string brace alias like "{color/white}" or "{brand/600}"
-    if (typeof val === 'string' && val.startsWith('{') && val.endsWith('}')) {
-      const aliasName = val.slice(1, -1);
-      return resolveValue(aliasName, mode, new Set(visited));
-    }
-
-    // Process val object types
     if (typeof val === 'object' && val !== null) {
       if (val.alias) {
-        return resolveValue(val.alias, mode, new Set(visited));
+        const resolvedAlias = resolveValue(val.alias, mode, new Set(visited));
+        if (resolvedAlias !== undefined) return resolvedAlias;
       }
       if (val.hex !== undefined && val.alpha !== undefined) {
         return hexToRgba(val.hex, val.alpha);
       }
+      if (val.hex !== undefined) {
+        return val.hex;
+      }
+    }
+
+    if (typeof val === 'string' && val.startsWith('$')) {
+      return val;
     }
 
     if (typeof val === 'number') {
-      // Add px unit to dimensions except unitless properties like grid columns
       if (!varName.includes('grid-columns')) {
         return `${val}px`;
       }
@@ -125,31 +137,28 @@ async function runBuild() {
     return val;
   }
 
-  // Step 3: Extract tokens per Mode (Light, Dark, Default, Fintech, etc.)
+  // Step 3: Extract tokens per Mode
   const lightTokens = {};
   const darkTokens = {};
   const brandModes = {};
 
   for (const varName in lookup) {
-    const item = lookup[varName];
     const pathArray = varName.split('/');
 
-    // Light / Default Mode
-    const lightVal = resolveValue(varName, 'Light') ?? resolveValue(varName, 'Default');
+    const lightVal = resolveValue(varName, 'light') ?? resolveValue(varName, 'Default');
     if (lightVal !== undefined) {
       setDeep(lightTokens, pathArray, lightVal);
     }
 
-    // Dark Mode
-    const darkVal = resolveValue(varName, 'Dark');
+    const darkVal = resolveValue(varName, 'dark');
     if (darkVal !== undefined) {
       setDeep(darkTokens, pathArray, darkVal);
     }
 
-    // Brand modes (Fintech, Health-tech, Hospitality, Edtech)
-    const modes = Object.keys(item.values);
+    const modes = Object.keys(lookup[varName].values);
     for (const m of modes) {
-      if (m !== 'Light' && m !== 'Dark' && m !== 'Default') {
+      const normM = m.toLowerCase();
+      if (normM !== 'light' && normM !== 'dark' && normM !== 'default') {
         if (!brandModes[m]) brandModes[m] = {};
         const modeVal = resolveValue(varName, m);
         if (modeVal !== undefined) {
@@ -174,12 +183,10 @@ async function runBuild() {
 
   const dtcgTokens = convertToDtcg(lightTokens);
 
-  // Write normalized JSON to dist/json/tokens.json
   const distJsonDir = path.join(__dirname, 'dist/json');
   if (!fs.existsSync(distJsonDir)) fs.mkdirSync(distJsonDir, { recursive: true });
   fs.writeFileSync(path.join(distJsonDir, 'tokens.json'), JSON.stringify(lightTokens, null, 2));
 
-  // Run Style Dictionary on normalized DTCG tokens
   const sd = new StyleDictionary({
     tokens: dtcgTokens,
     platforms: {
@@ -259,7 +266,7 @@ async function runBuild() {
   }
 
   const dTsContent = `/**
- * Auto-generated TypeScript definitions for Figma Design Tokens
+ * Auto-generated TypeScript definitions for Vektr Design Tokens (v3.0.0)
  */
 
 export declare const tokens: ${generateTsTypes(lightTokens, 2)};
@@ -275,7 +282,7 @@ module.exports = {
   darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {
-      colors: ${JSON.stringify(lightTokens.brand || {}, null, 2)},
+      colors: ${JSON.stringify({ ...(lightTokens.color || {}), ...(lightTokens.brand || {}), ...(lightTokens.neutral || {}) }, null, 2)},
       surface: ${JSON.stringify(lightTokens.surface || {}, null, 2)},
       textColor: ${JSON.stringify(lightTokens.text || {}, null, 2)},
       borderColor: ${JSON.stringify(lightTokens.border || {}, null, 2)},
@@ -291,7 +298,7 @@ module.exports = {
   if (!fs.existsSync(tailwindDir)) fs.mkdirSync(tailwindDir, { recursive: true });
   fs.writeFileSync(path.join(tailwindDir, 'preset.js'), tailwindPresetContent);
 
-  console.log('🎉 Successfully compiled all Figma tokens across Light, Dark & Brand modes!');
+  console.log('🎉 Successfully compiled 170 Figma v3.0.0 tokens across Light, Dark & Sub-brand modes!');
 }
 
 runBuild().catch(err => {
