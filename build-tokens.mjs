@@ -6,6 +6,17 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+function parseColor(val) {
+  if (typeof val === 'string' && val.startsWith('#') && val.length === 9) {
+    const r = parseInt(val.slice(1, 3), 16);
+    const g = parseInt(val.slice(3, 5), 16);
+    const b = parseInt(val.slice(5, 7), 16);
+    const a = parseFloat((parseInt(val.slice(7, 9), 16) / 255).toFixed(2));
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+  }
+  return val;
+}
+
 function hexToRgba(hex, alpha) {
   let c = hex.replace('#', '');
   if (c.length === 3) {
@@ -43,41 +54,37 @@ async function runBuild() {
   const figmaJsonPath = path.join(__dirname, 'tokens.json');
   const rawData = JSON.parse(fs.readFileSync(figmaJsonPath, 'utf8'));
 
-  // Step 1: Normalize all variables into a lookup index
   const lookup = {};
 
-  for (const collectionKey in rawData) {
-    if (collectionKey.startsWith('$')) continue;
+  // Recursive walker to extract nested W3C DTCG tokens ($value & $type)
+  function walkTokens(obj, currentPath = []) {
+    if (typeof obj !== 'object' || obj === null) return;
 
-    const collection = rawData[collectionKey];
-    if (typeof collection !== 'object' || collection === null) continue;
-
-    const varsObj = collection.variables || collection;
-
-    for (const varName in varsObj) {
-      if (varName.startsWith('$')) continue;
-
-      const item = varsObj[varName];
+    if ('$value' in obj) {
+      const varName = currentPath.join('/');
       if (!lookup[varName]) {
         lookup[varName] = { values: {} };
       }
-
-      if (typeof item === 'object' && item !== null && !Array.isArray(item)) {
-        if ('values' in item && typeof item.values === 'object') {
-          for (const m in item.values) {
-            lookup[varName].values[m] = item.values[m];
-          }
-        } else if ('hex' in item || 'alias' in item || 'value' in item) {
-          lookup[varName].values['Default'] = item;
-        } else {
-          for (const m in item) {
-            lookup[varName].values[m] = item[m];
-          }
+      const val = obj.$value;
+      if (typeof val === 'object' && val !== null && !Array.isArray(val) && !('hex' in val) && !('alias' in val)) {
+        for (const m in val) {
+          lookup[varName].values[m] = val[m];
         }
       } else {
-        lookup[varName].values['Default'] = item;
+        lookup[varName].values['Default'] = val;
       }
+      return;
     }
+
+    for (const key in obj) {
+      if (key.startsWith('$')) continue;
+      walkTokens(obj[key], [...currentPath, key]);
+    }
+  }
+
+  for (const collectionKey in rawData) {
+    if (collectionKey.startsWith('$')) continue;
+    walkTokens(rawData[collectionKey]);
   }
 
   // Step 2: Resolver function
@@ -110,6 +117,14 @@ async function runBuild() {
 
     if (val === undefined) return undefined;
 
+    // Handle curly brace alias string like "{brand/600}" or "{color/white}"
+    if (typeof val === 'string' && val.startsWith('{') && val.endsWith('}')) {
+      const aliasTarget = val.slice(1, -1);
+      const resolvedAlias = resolveValue(aliasTarget, mode, new Set(visited));
+      if (resolvedAlias !== undefined) return resolvedAlias;
+    }
+
+    // Object resolution (alias, hex/alpha)
     if (typeof val === 'object' && val !== null) {
       if (val.alias) {
         const resolvedAlias = resolveValue(val.alias, mode, new Set(visited));
@@ -123,8 +138,8 @@ async function runBuild() {
       }
     }
 
-    if (typeof val === 'string' && val.startsWith('$')) {
-      return val;
+    if (typeof val === 'string') {
+      return parseColor(val);
     }
 
     if (typeof val === 'number') {
@@ -266,7 +281,7 @@ async function runBuild() {
   }
 
   const dTsContent = `/**
- * Auto-generated TypeScript definitions for Vektr Design Tokens (v3.0.0)
+ * Auto-generated TypeScript definitions for Vektr Design Tokens
  */
 
 export declare const tokens: ${generateTsTypes(lightTokens, 2)};
@@ -298,7 +313,7 @@ module.exports = {
   if (!fs.existsSync(tailwindDir)) fs.mkdirSync(tailwindDir, { recursive: true });
   fs.writeFileSync(path.join(tailwindDir, 'preset.js'), tailwindPresetContent);
 
-  console.log('🎉 Successfully compiled 170 Figma v3.0.0 tokens across Light, Dark & Sub-brand modes!');
+  console.log('🎉 Successfully compiled Tokens Studio W3C DTCG tokens across Light, Dark & Brand modes!');
 }
 
 runBuild().catch(err => {

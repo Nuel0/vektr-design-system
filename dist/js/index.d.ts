@@ -1,8 +1,69 @@
 /**
- * Auto-generated TypeScript definitions for Vektr Design Tokens (v3.0.0)
+ * Auto-generated TypeScript definitions for Vektr Design Tokens
  */
 
 export declare const tokens: {
+  "action": {
+    "primary": string;
+    "primary-hover": string;
+    "primary-active": string;
+    "danger": string;
+    "danger-hover": string;
+    "danger-active": string;
+  };
+  "surface": {
+    "base": string;
+    "raised": string;
+    "sunken": string;
+    "subtle": string;
+    "inverse": string;
+    "overlay": string;
+  };
+  "text": {
+    "primary": string;
+    "secondary": string;
+    "muted": string;
+    "inverse": string;
+    "disabled": string;
+  };
+  "border": {
+    "default": string;
+    "strong": string;
+    "focus": string;
+    "brand-width": string;
+    "width-thin": string;
+    "width-default": string;
+    "width-thick": string;
+    "width-accent": string;
+  };
+  "status": {
+    "success": string;
+    "success-bg": string;
+    "success-text": string;
+    "warning": string;
+    "warning-bg": string;
+    "warning-text": string;
+    "danger": string;
+    "danger-bg": string;
+    "danger-text": string;
+    "info": string;
+    "info-bg": string;
+    "info-text": string;
+  };
+  "shadow": {
+    "color-sm": string;
+    "color-md": string;
+    "color-lg": string;
+    "brand-blur": string;
+    "brand-y": string;
+  };
+  "icon": {
+    "subtle": string;
+    "sm": string;
+    "md": string;
+    "lg": string;
+    "xl": string;
+  };
   "color": {
     "gray": {
       "50": string;
@@ -63,67 +124,6 @@ export declare const tokens: {
     };
     "white": string;
     "black": string;
-  };
-  "surface": {
-    "base": string;
-    "raised": string;
-    "sunken": string;
-    "subtle": string;
-    "overlay": string;
-    "inverse": string;
-  };
-  "text": {
-    "primary": string;
-    "secondary": string;
-    "muted": string;
-    "inverse": string;
-    "disabled": string;
-  };
-  "action": {
-    "primary": string;
-    "primary-hover": string;
-    "primary-active": string;
-    "danger": string;
-    "danger-hover": string;
-    "danger-active": string;
-  };
-  "border": {
-    "default": string;
-    "strong": string;
-    "focus": string;
-    "brand-width": string;
-    "width-thin": string;
-    "width-default": string;
-    "width-thick": string;
-    "width-accent": string;
-  };
-  "icon": {
-    "subtle": string;
-    "sm": string;
-    "md": string;
-    "lg": string;
-    "xl": string;
-  };
-  "status": {
-    "success": string;
-    "success-bg": string;
-    "success-text": string;
-    "warning": string;
-    "warning-bg": string;
-    "warning-text": string;
-    "danger": string;
-    "danger-bg": string;
-    "danger-text": string;
-    "info": string;
-    "info-bg": string;
-    "info-text": string;
-  };
-  "shadow": {
-    "color-sm": string;
-    "color-md": string;
-    "color-lg": string;
-    "brand-blur": string;
-    "brand-y": string;
   };
   "brand": {
     "50": string;
@@ -233,6 +233,67 @@ export declare const tokens: {
   };
 };
 export declare const darkTokens: {
+  "action": {
+    "primary": string;
+    "primary-hover": string;
+    "primary-active": string;
+    "danger": string;
+    "danger-hover": string;
+    "danger-active": string;
+  };
+  "surface": {
+    "base": string;
+    "raised": string;
+    "sunken": string;
+    "subtle": string;
+    "inverse": string;
+    "overlay": string;
+  };
+  "text": {
+    "primary": string;
+    "secondary": string;
+    "muted": string;
+    "inverse": string;
+    "disabled": string;
+  };
+  "border": {
+    "default": string;
+    "strong": string;
+    "focus": string;
+    "brand-width": string;
+    "width-thin": string;
+    "width-default": string;
+    "width-thick": string;
+    "width-accent": string;
+  };
+  "status": {
+    "success": string;
+    "success-bg": string;
+    "success-text": string;
+    "warning": string;
+    "warning-bg": string;
+    "warning-text": string;
+    "danger": string;
+    "danger-bg": string;
+    "danger-text": string;
+    "info": string;
+    "info-bg": string;
+    "info-text": string;
+  };
+  "shadow": {
+    "color-sm": string;
+    "color-md": string;
+    "color-lg": string;
+    "brand-blur": string;
+    "brand-y": string;
+  };
+  "icon": {
+    "subtle": string;
+    "sm": string;
+    "md": string;
+    "lg": string;
+    "xl": string;
+  };
   "color": {
     "gray": {
       "50": string;
@@ -293,67 +354,6 @@ export declare const darkTokens: {
     };
     "white": string;
     "black": string;
-  };
-  "surface": {
-    "base": string;
-    "raised": string;
-    "sunken": string;
-    "subtle": string;
-    "overlay": string;
-    "inverse": string;
-  };
-  "text": {
-    "primary": string;
-    "secondary": string;
-    "muted": string;
-    "inverse": string;
-    "disabled": string;
-  };
-  "action": {
-    "primary": string;
-    "primary-hover": string;
-    "primary-active": string;
-    "danger": string;
-    "danger-hover": string;
-    "danger-active": string;
-  };
-  "border": {
-    "default": string;
-    "strong": string;
-    "focus": string;
-    "brand-width": string;
-    "width-thin": string;
-    "width-default": string;
-    "width-thick": string;
-    "width-accent": string;
-  };
-  "icon": {
-    "subtle": string;
-    "sm": string;
-    "md": string;
-    "lg": string;
-    "xl": string;
-  };
-  "status": {
-    "success": string;
-    "success-bg": string;
-    "success-text": string;
-    "warning": string;
-    "warning-bg": string;
-    "warning-text": string;
-    "danger": string;
-    "danger-bg": string;
-    "danger-text": string;
-    "info": string;
-    "info-bg": string;
-    "info-text": string;
-  };
-  "shadow": {
-    "color-sm": string;
-    "color-md": string;
-    "color-lg": string;
-    "brand-blur": string;
-    "brand-y": string;
   };
   "brand": {
     "50": string;
