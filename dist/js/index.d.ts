@@ -3,6 +3,91 @@
  */
 
 export declare const tokens: {
+  "color": {
+    "gray": {
+      "50": string;
+      "100": string;
+      "200": string;
+      "300": string;
+      "400": string;
+      "500": string;
+      "600": string;
+      "700": string;
+      "800": string;
+      "900": string;
+    };
+    "slate": {
+      "100": string;
+      "200": string;
+      "300": string;
+      "400": string;
+      "500": string;
+      "600": string;
+      "700": string;
+      "800": string;
+      "900": string;
+      "950": string;
+    };
+    "green": {
+      "100": string;
+      "300": string;
+      "500": string;
+      "600": string;
+      "800": string;
+      "950": string;
+    };
+    "red": {
+      "100": string;
+      "300": string;
+      "400": string;
+      "600": string;
+      "700": string;
+      "800": string;
+      "950": string;
+    };
+    "amber": {
+      "100": string;
+      "300": string;
+      "500": string;
+      "600": string;
+      "800": string;
+      "950": string;
+    };
+    "blue": {
+      "100": string;
+      "300": string;
+      "500": string;
+      "600": string;
+      "800": string;
+      "950": string;
+    };
+    "white": string;
+    "black": string;
+  };
+  "surface": {
+    "base": string;
+    "raised": string;
+    "sunken": string;
+    "subtle": string;
+    "overlay": string;
+    "inverse": string;
+  };
+  "text": {
+    "primary": string;
+    "secondary": string;
+    "muted": string;
+    "disabled": string;
+    "inverse": string;
+    "contrast": string;
+  };
+  "action": {
+    "primary": string;
+    "primary-hover": string;
+    "primary-active": string;
+    "danger": string;
+    "danger-hover": string;
+    "danger-active": string;
+  };
   "brand": {
     "50": string;
     "100": string;
@@ -18,33 +103,16 @@ export declare const tokens: {
     "primary-hover": string;
     "primary-active": string;
   };
-  "surface": {
-    "base": string;
-    "raised": string;
-    "sunken": string;
-    "overlay": string;
-    "disabled": string;
-    "hover": string;
-    "active": string;
-    "inverse": string;
-  };
-  "text": {
-    "primary": string;
-    "secondary": string;
-    "muted": string;
-    "inverse": string;
-    "disabled": string;
-    "black": string;
-  };
   "border": {
     "default": string;
     "strong": string;
     "focus": string;
+    "disabled": string;
+    "brand-width": string;
     "width-thin": string;
     "width-default": string;
     "width-thick": string;
     "width-accent": string;
-    "brand-width": string;
   };
   "status": {
     "success": string;
@@ -56,11 +124,20 @@ export declare const tokens: {
     "danger": string;
     "danger-bg": string;
     "danger-text": string;
-    "danger-hover": string;
-    "danger-active": string;
     "info": string;
     "info-bg": string;
     "info-text": string;
+  };
+  "icon": {
+    "default": string;
+    "muted": string;
+    "inverse": string;
+    "disabled": string;
+    "subtle": string;
+    "sm": string;
+    "md": string;
+    "lg": string;
+    "xl": string;
   };
   "shadow": {
     "color-sm": string;
@@ -69,29 +146,33 @@ export declare const tokens: {
     "brand-blur": string;
     "brand-y": string;
   };
-  "icon": {
-    "default": string;
-    "muted": string;
-    "inverse": string;
-    "disabled": string;
+  "neutral": {
+    "50": string;
+    "100": string;
+    "200": string;
+    "300": string;
+    "400": string;
+    "500": string;
+    "700": string;
+    "900": string;
+  };
+  "font": {
+    "heading": string;
+    "body": string;
+  };
+  "radius": {
+    "brand": string;
+    "none": string;
     "sm": string;
     "md": string;
     "lg": string;
     "xl": string;
+    "xxl": string;
+    "full": string;
   };
-  "fill": {
-    "gray-50": string;
-    "gray-100": string;
-    "gray-200": string;
-    "gray-300": string;
-    "gray-400": string;
-    "gray-500": string;
-    "gray-600": string;
-    "gray-700": string;
-    "gray-800": string;
-    "gray-900": string;
-    "black": string;
-    "white": string;
+  "spacing": {
+    "brand-padding": string;
+    "brand-gap": string;
   };
   "space": {
     "1": string;
@@ -105,16 +186,6 @@ export declare const tokens: {
     "12": string;
     "16": string;
     "20": string;
-  };
-  "radius": {
-    "none": string;
-    "sm": string;
-    "md": string;
-    "lg": string;
-    "xl": string;
-    "xxl": string;
-    "full": string;
-    "brand": string;
   };
   "display": {
     "lg": string;
@@ -149,14 +220,6 @@ export declare const tokens: {
   "label": {
     "base": string;
   };
-  "table": {
-    "col-checkbox": string;
-    "col-status": string;
-    "col-actions": string;
-    "col-name": string;
-    "col-date": string;
-    "col-time": string;
-  };
   "layout": {
     "breakpoint-mobile": string;
     "breakpoint-tablet": string;
@@ -169,26 +232,101 @@ export declare const tokens: {
     "grid-columns": string;
     "grid-columns-alt": string;
   };
-  "neutral": {
-    "50": string;
-    "100": string;
-    "200": string;
-    "300": string;
-    "400": string;
-    "500": string;
-    "700": string;
-    "900": string;
-  };
-  "font": {
-    "heading": string;
-    "body": string;
-  };
-  "spacing": {
-    "brand-padding": string;
-    "brand-gap": string;
+  "table": {
+    "col-checkbox": string;
+    "col-status": string;
+    "col-actions": string;
+    "col-name": string;
+    "col-date": string;
+    "col-time": string;
   };
 };
 export declare const darkTokens: {
+  "color": {
+    "gray": {
+      "50": string;
+      "100": string;
+      "200": string;
+      "300": string;
+      "400": string;
+      "500": string;
+      "600": string;
+      "700": string;
+      "800": string;
+      "900": string;
+    };
+    "slate": {
+      "100": string;
+      "200": string;
+      "300": string;
+      "400": string;
+      "500": string;
+      "600": string;
+      "700": string;
+      "800": string;
+      "900": string;
+      "950": string;
+    };
+    "green": {
+      "100": string;
+      "300": string;
+      "500": string;
+      "600": string;
+      "800": string;
+      "950": string;
+    };
+    "red": {
+      "100": string;
+      "300": string;
+      "400": string;
+      "600": string;
+      "700": string;
+      "800": string;
+      "950": string;
+    };
+    "amber": {
+      "100": string;
+      "300": string;
+      "500": string;
+      "600": string;
+      "800": string;
+      "950": string;
+    };
+    "blue": {
+      "100": string;
+      "300": string;
+      "500": string;
+      "600": string;
+      "800": string;
+      "950": string;
+    };
+    "white": string;
+    "black": string;
+  };
+  "surface": {
+    "base": string;
+    "raised": string;
+    "sunken": string;
+    "subtle": string;
+    "overlay": string;
+    "inverse": string;
+  };
+  "text": {
+    "primary": string;
+    "secondary": string;
+    "muted": string;
+    "disabled": string;
+    "inverse": string;
+    "contrast": string;
+  };
+  "action": {
+    "primary": string;
+    "primary-hover": string;
+    "primary-active": string;
+    "danger": string;
+    "danger-hover": string;
+    "danger-active": string;
+  };
   "brand": {
     "50": string;
     "100": string;
@@ -204,33 +342,16 @@ export declare const darkTokens: {
     "primary-hover": string;
     "primary-active": string;
   };
-  "surface": {
-    "base": string;
-    "raised": string;
-    "sunken": string;
-    "overlay": string;
-    "disabled": string;
-    "hover": string;
-    "active": string;
-    "inverse": string;
-  };
-  "text": {
-    "primary": string;
-    "secondary": string;
-    "muted": string;
-    "inverse": string;
-    "disabled": string;
-    "black": string;
-  };
   "border": {
     "default": string;
     "strong": string;
     "focus": string;
+    "disabled": string;
+    "brand-width": string;
     "width-thin": string;
     "width-default": string;
     "width-thick": string;
     "width-accent": string;
-    "brand-width": string;
   };
   "status": {
     "success": string;
@@ -242,11 +363,20 @@ export declare const darkTokens: {
     "danger": string;
     "danger-bg": string;
     "danger-text": string;
-    "danger-hover": string;
-    "danger-active": string;
     "info": string;
     "info-bg": string;
     "info-text": string;
+  };
+  "icon": {
+    "default": string;
+    "muted": string;
+    "inverse": string;
+    "disabled": string;
+    "subtle": string;
+    "sm": string;
+    "md": string;
+    "lg": string;
+    "xl": string;
   };
   "shadow": {
     "color-sm": string;
@@ -255,29 +385,33 @@ export declare const darkTokens: {
     "brand-blur": string;
     "brand-y": string;
   };
-  "icon": {
-    "default": string;
-    "muted": string;
-    "inverse": string;
-    "disabled": string;
+  "neutral": {
+    "50": string;
+    "100": string;
+    "200": string;
+    "300": string;
+    "400": string;
+    "500": string;
+    "700": string;
+    "900": string;
+  };
+  "font": {
+    "heading": string;
+    "body": string;
+  };
+  "radius": {
+    "brand": string;
+    "none": string;
     "sm": string;
     "md": string;
     "lg": string;
     "xl": string;
+    "xxl": string;
+    "full": string;
   };
-  "fill": {
-    "gray-50": string;
-    "gray-100": string;
-    "gray-200": string;
-    "gray-300": string;
-    "gray-400": string;
-    "gray-500": string;
-    "gray-600": string;
-    "gray-700": string;
-    "gray-800": string;
-    "gray-900": string;
-    "black": string;
-    "white": string;
+  "spacing": {
+    "brand-padding": string;
+    "brand-gap": string;
   };
   "space": {
     "1": string;
@@ -291,16 +425,6 @@ export declare const darkTokens: {
     "12": string;
     "16": string;
     "20": string;
-  };
-  "radius": {
-    "none": string;
-    "sm": string;
-    "md": string;
-    "lg": string;
-    "xl": string;
-    "xxl": string;
-    "full": string;
-    "brand": string;
   };
   "display": {
     "lg": string;
@@ -335,14 +459,6 @@ export declare const darkTokens: {
   "label": {
     "base": string;
   };
-  "table": {
-    "col-checkbox": string;
-    "col-status": string;
-    "col-actions": string;
-    "col-name": string;
-    "col-date": string;
-    "col-time": string;
-  };
   "layout": {
     "breakpoint-mobile": string;
     "breakpoint-tablet": string;
@@ -355,23 +471,13 @@ export declare const darkTokens: {
     "grid-columns": string;
     "grid-columns-alt": string;
   };
-  "neutral": {
-    "50": string;
-    "100": string;
-    "200": string;
-    "300": string;
-    "400": string;
-    "500": string;
-    "700": string;
-    "900": string;
-  };
-  "font": {
-    "heading": string;
-    "body": string;
-  };
-  "spacing": {
-    "brand-padding": string;
-    "brand-gap": string;
+  "table": {
+    "col-checkbox": string;
+    "col-status": string;
+    "col-actions": string;
+    "col-name": string;
+    "col-date": string;
+    "col-time": string;
   };
 };
 

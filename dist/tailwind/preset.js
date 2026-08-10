@@ -22,29 +22,28 @@ module.exports = {
   "base": "#ffffff",
   "raised": "#f9fafb",
   "sunken": "#f3f4f6",
-  "overlay": "rgba(0, 0, 0, 0.5)",
-  "disabled": "#f3f4f6",
-  "hover": "#f3f4f6",
-  "active": "#e5e7eb",
+  "subtle": "#f3f4f6",
+  "overlay": "rgba(0,0,0,0.5)",
   "inverse": "#111827"
 },
       textColor: {
   "primary": "#111827",
   "secondary": "#4b5563",
   "muted": "#9ca3af",
-  "inverse": "#ffffff",
   "disabled": "#d1d5db",
-  "black": "#000000"
+  "inverse": "#ffffff",
+  "contrast": "#000000"
 },
       borderColor: {
   "default": "#e5e7eb",
   "strong": "#d1d5db",
   "focus": "#4f46e5",
+  "disabled": "#e5e7eb",
+  "brand-width": "1px",
   "width-thin": "1px",
   "width-default": "1.5px",
   "width-thick": "2px",
-  "width-accent": "3px",
-  "brand-width": "1px"
+  "width-accent": "3px"
 },
       spacing: {
   "1": "4px",
@@ -60,14 +59,14 @@ module.exports = {
   "20": "80px"
 },
       borderRadius: {
+  "brand": "8px",
   "none": "0px",
   "sm": "4px",
   "md": "8px",
   "lg": "16px",
   "xl": "40px",
   "xxl": "48px",
-  "full": "9999px",
-  "brand": "8px"
+  "full": "9999px"
 },
       fontSize: {
   "lg": "16px",

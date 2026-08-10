@@ -49,17 +49,27 @@ async function runBuild() {
   // Step 1: Create global variable lookup table
   // lookup[varName] = { type, values: { [mode]: value } }
   const lookup = {};
+  const collections = rawData.collections || rawData;
 
-  for (const collectionKey in rawData) {
-    const collection = rawData[collectionKey];
-    if (!collection.variables) continue;
+  for (const collectionKey in collections) {
+    const collection = collections[collectionKey];
+    if (!collection || !collection.variables) continue;
 
     for (const varName in collection.variables) {
       const v = collection.variables[varName];
-      lookup[varName] = {
-        type: v.type,
-        values: v.values || {}
-      };
+      let values = {};
+      let type = undefined;
+
+      if (v !== null && typeof v === 'object' && ('values' in v || 'type' in v)) {
+        type = v.type;
+        values = v.values || {};
+      } else if (v !== null && typeof v === 'object') {
+        values = v;
+      } else {
+        values = { Default: v };
+      }
+
+      lookup[varName] = { type, values };
     }
   }
 
@@ -88,7 +98,13 @@ async function runBuild() {
 
     if (val === undefined) return undefined;
 
-    // Process val types
+    // Process string brace alias like "{color/white}" or "{brand/600}"
+    if (typeof val === 'string' && val.startsWith('{') && val.endsWith('}')) {
+      const aliasName = val.slice(1, -1);
+      return resolveValue(aliasName, mode, new Set(visited));
+    }
+
+    // Process val object types
     if (typeof val === 'object' && val !== null) {
       if (val.alias) {
         return resolveValue(val.alias, mode, new Set(visited));
@@ -100,7 +116,7 @@ async function runBuild() {
 
     if (typeof val === 'number') {
       // Add px unit to dimensions except unitless properties like grid columns
-      if (item.type === 'FLOAT' && !varName.includes('grid-columns')) {
+      if (!varName.includes('grid-columns')) {
         return `${val}px`;
       }
       return String(val);
