@@ -19,6 +19,7 @@
     },
     "./css": "./dist/css/variables.css",
     "./json": "./dist/json/tokens.json",
+    "./typography": "./dist/json/typography.json",
     "./tailwind": "./dist/tailwind/preset.js"
   },
   "files": [

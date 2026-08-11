@@ -234,6 +234,14 @@ async function runBuild() {
   if (!fs.existsSync(distJsonDir)) fs.mkdirSync(distJsonDir, { recursive: true });
   fs.writeFileSync(path.join(distJsonDir, 'tokens.json'), JSON.stringify(lightTokens, null, 2));
 
+  // Process typography.json if present
+  const typographyPath = path.join(__dirname, 'typography.json');
+  let typographyData = null;
+  if (fs.existsSync(typographyPath)) {
+    typographyData = JSON.parse(fs.readFileSync(typographyPath, 'utf8'));
+    fs.writeFileSync(path.join(distJsonDir, 'typography.json'), JSON.stringify(typographyData, null, 2));
+  }
+
   const sd = new StyleDictionary({
     tokens: dtcgTokens,
     platforms: {
@@ -266,7 +274,7 @@ async function runBuild() {
 
   await sd.buildAllPlatforms();
 
-  // Step 5: Enhance CSS with Dark mode and Brand mode selectors
+  // Step 5: Enhance CSS with Dark mode, Brand mode selectors, and Typography Utility Classes
   const baseCssPath = path.join(__dirname, 'dist/css/variables.css');
   let baseCss = fs.readFileSync(baseCssPath, 'utf8');
 
@@ -295,9 +303,35 @@ async function runBuild() {
     }
   }
 
+  function getFontWeightNumeric(weightStr) {
+    if (typeof weightStr === 'number') return weightStr;
+    const lower = String(weightStr).toLowerCase();
+    if (lower.includes('bold') && lower.includes('semi')) return 600;
+    if (lower.includes('bold')) return 700;
+    if (lower.includes('medium')) return 500;
+    if (lower.includes('regular') || lower.includes('normal')) return 400;
+    if (lower.includes('light')) return 300;
+    return 400;
+  }
+
+  if (typographyData && typographyData.typography) {
+    baseCss += `\n/* Typography Utility Classes (35 Text Styles) */\n`;
+    const typo = typographyData.typography;
+    for (const cat in typo) {
+      const catKebab = toKebab(cat);
+      const fontVar = (catKebab === 'display' || catKebab === 'header') ? 'var(--font-heading, Inter)' : 'var(--font-body, Inter)';
+      for (const variant in typo[cat]) {
+        const style = typo[cat][variant];
+        const className = `.text-${catKebab}-${variant.toLowerCase()}`;
+        const weightNum = getFontWeightNumeric(style.fontWeight);
+        baseCss += `${className} {\n  font-family: ${fontVar};\n  font-size: ${style.fontSize}px;\n  font-weight: ${weightNum};\n  line-height: ${style.lineHeight}px;\n  letter-spacing: ${style.letterSpacing}px;\n}\n\n`;
+      }
+    }
+  }
+
   fs.writeFileSync(baseCssPath, baseCss);
 
-  // Step 6: Generate TypeScript d.ts definition file
+  // Step 6: Generate TypeScript d.ts definition file & export JS typography
   function generateTsTypes(obj, indent = 2) {
     const spaces = ' '.repeat(indent);
     let code = '{\n';
@@ -312,13 +346,23 @@ async function runBuild() {
     return code;
   }
 
+  const jsIndexPath = path.join(__dirname, 'dist/js/index.js');
+  const jsCjsPath = path.join(__dirname, 'dist/js/index.cjs');
+
+  if (typographyData) {
+    const topoJs = `\nexport const typography = ${JSON.stringify(typographyData.typography, null, 2)};\n`;
+    const topoCjs = `\nmodule.exports.typography = ${JSON.stringify(typographyData.typography, null, 2)};\n`;
+    fs.appendFileSync(jsIndexPath, topoJs);
+    fs.appendFileSync(jsCjsPath, topoCjs);
+  }
+
   const dTsContent = `/**
  * Auto-generated TypeScript definitions for Vektr Design Tokens
  */
 
 export declare const tokens: ${generateTsTypes(lightTokens, 2)};
 export declare const darkTokens: ${generateTsTypes(darkTokens, 2)};
-
+${typographyData ? `export declare const typography: ${JSON.stringify(typographyData.typography, null, 2)};\n` : ''}
 export default tokens;
 `;
   fs.writeFileSync(path.join(__dirname, 'dist/js/index.d.ts'), dTsContent);
@@ -335,7 +379,7 @@ module.exports = {
       borderColor: ${JSON.stringify(lightTokens.border || {}, null, 2)},
       spacing: ${JSON.stringify(lightTokens.space || {}, null, 2)},
       borderRadius: ${JSON.stringify(lightTokens.radius || {}, null, 2)},
-      fontSize: ${JSON.stringify({ ...(lightTokens.display || {}), ...(lightTokens.header || {}), ...(lightTokens.paragraph || {}), ...(lightTokens.body || {}) }, null, 2)}
+      fontSize: ${JSON.stringify({ ...(lightTokens.display || {}), ...(lightTokens.header || {}), ...(lightTokens.paragraph || {}), ...(lightTokens.body || {}) }, null, 2)}${typographyData ? `,\n      typography: ${JSON.stringify(typographyData.typography, null, 2)}` : ''}
     }
   }
 };
@@ -345,7 +389,7 @@ module.exports = {
   if (!fs.existsSync(tailwindDir)) fs.mkdirSync(tailwindDir, { recursive: true });
   fs.writeFileSync(path.join(tailwindDir, 'preset.js'), tailwindPresetContent);
 
-  console.log('🎉 Successfully compiled Tokens Studio W3C DTCG tokens across Light, Dark & Brand modes!');
+  console.log('🎉 Successfully compiled Tokens Studio W3C DTCG tokens & VEKTR Typography styles across Light, Dark & Brand modes!');
 }
 
 runBuild().catch(err => {
