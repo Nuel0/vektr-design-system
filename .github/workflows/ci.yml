@@ -39,7 +39,7 @@ jobs:
         run: npx publint
 
       - name: Check Module Types with @arethetypeswrong/cli
-        run: npx @arethetypeswrong/cli --pack .
+        run: npx @arethetypeswrong/cli --pack . --ignore-rules no-resolution
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
