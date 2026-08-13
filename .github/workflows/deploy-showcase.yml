@@ -36,6 +36,9 @@ jobs:
       - name: Build Design Tokens, CSS & Components
         run: npm run build
 
+      - name: Copy Build Output into Showcase Folder
+        run: cp -r dist docs/dist
+
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
 
