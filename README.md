@@ -122,5 +122,32 @@ Swapping `[data-brand="fintech"]` updates all primitive step palettes, automatic
 
 ---
 
+## 📦 Releasing & Publishing to NPM
+
+Vektr uses **Changesets** for automated semantic versioning, changelog generation, and GitHub release automation.
+
+### Local Release Flow
+```bash
+# 1. Create a changeset file describing your changes
+npm run changeset
+
+# 2. Commit the changeset file
+git add .changeset/ && git commit -m "docs: add changeset"
+
+# 3. Apply version bumps and update CHANGELOG.md
+npm run version-packages
+
+# 4. Commit updated package version files
+git add . && git commit -m "chore: release version bump"
+
+# 5. Publish package to NPM
+npm run release
+```
+
+### Automated GitHub CI Release Flow
+Pushing commits to `main` automatically triggers [.github/workflows/release.yml](file:///Users/MACBOOKPRO/Desktop/figma-design-tokens/.github/workflows/release.yml). Changesets automatically manages a **Release PR**. Merging the Release PR publishes the updated package to NPM with OIDC provenance (`npm publish --provenance --access public`).
+
+---
+
 ## 📄 License
 [MIT](LICENSE)
