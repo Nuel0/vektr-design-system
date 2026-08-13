@@ -40,9 +40,9 @@ jobs:
 
       - name: Check Module Types with @arethetypeswrong/cli
         run: |
-          TGZ_FILE=$(npm pack | tail -n 1)
-          npx @arethetypeswrong/cli "./$TGZ_FILE" --ignore-rules no-resolution
-          rm -f "$TGZ_FILE"
+          npm pack
+          npx @arethetypeswrong/cli ./vektr-design-system-*.tgz --ignore-rules no-resolution
+          rm -f *.tgz
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
