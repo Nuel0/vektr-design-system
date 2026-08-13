@@ -1398,6 +1398,10 @@ ${utilitiesCss}
 
   fs.writeFileSync(stylesCssPath, unifiedStyles);
 
+  const docsDistDir = path.join(__dirname, 'docs/dist');
+  if (!fs.existsSync(docsDistDir)) fs.mkdirSync(docsDistDir, { recursive: true });
+  fs.writeFileSync(path.join(docsDistDir, 'styles.css'), unifiedStyles);
+
   // Step 6: Generate TypeScript source file for tokens (src/tokens/index.ts)
   const tokensSrcDir = path.join(__dirname, 'src/tokens');
   if (!fs.existsSync(tokensSrcDir)) fs.mkdirSync(tokensSrcDir, { recursive: true });
