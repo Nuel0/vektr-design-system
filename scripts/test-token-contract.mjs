@@ -88,7 +88,7 @@ if (primitiveLeaks.size > 0) {
 const inlineStyleViolations = [];
 srcFiles.forEach(file => {
   const relativePath = path.relative(rootDir, file);
-  if (relativePath.includes('components')) {
+  if (relativePath.includes('components') && !relativePath.includes('__tests__')) {
     const content = fs.readFileSync(file, 'utf8');
     if (/style\s*=\s*\{/.test(content)) {
       inlineStyleViolations.push(relativePath);

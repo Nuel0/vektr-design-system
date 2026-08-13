@@ -96,11 +96,11 @@ describe('Vektr 25-Component Unit & Accessibility Test Suite', () => {
   it('6. RadioGroup renders items without accessibility violations', async () => {
     const { container, getByLabelText } = render(
       <RadioGroup defaultValue="r1" aria-label="Select Frequency">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div>
           <RadioGroupItem value="r1" id="r1" />
           <Label htmlFor="r1">Daily</Label>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div>
           <RadioGroupItem value="r2" id="r2" />
           <Label htmlFor="r2">Weekly</Label>
         </div>
