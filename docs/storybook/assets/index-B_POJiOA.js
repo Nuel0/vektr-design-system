@@ -1,0 +1,1 @@
+import{r as a,o as u}from"./index-UiW3gZKV.js";import{u as s}from"./index-BpC7CEvB.js";var f=Object.defineProperty,n=(r,t)=>f(r,"name",{value:t,configurable:!0}),c=u[" useId ".trim().toString()]||(()=>{}),d=0;function i(r){const[t,e]=a.useState(c());return s(()=>{r||e(o=>o??String(d++))},[r]),r||(t?`radix-${t}`:"")}n(i,"useId");export{i as u};

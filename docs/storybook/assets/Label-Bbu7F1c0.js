@@ -1,0 +1,1 @@
+import{j as r}from"./jsx-runtime-D_zvdyIk.js";import{R as l}from"./index-UiW3gZKV.js";import{c as m}from"./clsx-B-dksMZM.js";const a=l.forwardRef(({className:e,...s},o)=>r.jsx("label",{ref:o,className:m("vektr-label",e),...s}));a.displayName="Label";a.__docgenInfo={description:"",methods:[],displayName:"Label"};export{a as L};

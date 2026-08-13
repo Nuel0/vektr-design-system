@@ -1,1 +1,0 @@
-import{t as e}from"./Label-BtgWbBlX.js";var t={title:`Forms/Label`,component:e,tags:[`autodocs`],args:{children:`Form Field Label`}},n={};n.parameters={...n.parameters,docs:{...n.parameters?.docs,source:{originalSource:`{}`,...n.parameters?.docs?.source}}};var r=[`Default`];export{n as Default,r as __namedExportsOrder,t as default};
