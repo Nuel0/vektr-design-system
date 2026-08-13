@@ -242,16 +242,20 @@ describe('Vektr 25-Component Unit & Accessibility Test Suite', () => {
 
   // 16. Tooltip
   it('16. Tooltip renders trigger and tooltip content', async () => {
-    const { getByText, container } = render(
-      <TooltipProvider>
-        <Tooltip open={true}>
-          <TooltipTriggerAsButton>Hover me</TooltipTriggerAsButton>
-          <TooltipContent>Helpful tooltip text</TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    );
-    expect(getByText('Hover me')).toBeInTheDocument();
-    const results = await axe(container);
+    let containerElement: HTMLElement;
+    await act(async () => {
+      const { container } = render(
+        <TooltipProvider>
+          <Tooltip open={true}>
+            <TooltipTriggerAsButton>Hover me</TooltipTriggerAsButton>
+            <TooltipContent>Helpful tooltip text</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      );
+      containerElement = container;
+    });
+    expect(screen.getByText('Hover me')).toBeInTheDocument();
+    const results = await axe(containerElement!);
     expect(results).toHaveNoViolations();
   });
 
@@ -262,16 +266,20 @@ describe('Vektr 25-Component Unit & Accessibility Test Suite', () => {
 
   // 17. Popover
   it('17. Popover renders content when open', async () => {
-    const { getByText, container } = render(
-      <Popover open={true}>
-        <PopoverTrigger asChild>
-          <button>Open Popover</button>
-        </PopoverTrigger>
-        <PopoverContent>Popover body text</PopoverContent>
-      </Popover>
-    );
-    expect(getByText('Popover body text')).toBeInTheDocument();
-    const results = await axe(container);
+    let containerElement: HTMLElement;
+    await act(async () => {
+      const { container } = render(
+        <Popover open={true}>
+          <PopoverTrigger asChild>
+            <button>Open Popover</button>
+          </PopoverTrigger>
+          <PopoverContent>Popover body text</PopoverContent>
+        </Popover>
+      );
+      containerElement = container;
+    });
+    expect(screen.getByText('Popover body text')).toBeInTheDocument();
+    const results = await axe(containerElement!);
     expect(results).toHaveNoViolations();
   });
 
