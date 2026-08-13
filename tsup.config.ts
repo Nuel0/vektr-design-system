@@ -13,6 +13,17 @@ export default defineConfig([
     external: ['react', 'react-dom'],
   },
   {
+    entry: { index: 'src/icons/index.ts' },
+    outDir: 'dist/icons',
+    format: ['cjs', 'esm'],
+    dts: true,
+    clean: false,
+    banner: {
+      js: '"use client";',
+    },
+    external: ['react', 'react-dom'],
+  },
+  {
     entry: { index: 'src/tokens/index.ts' },
     outDir: 'dist/js',
     format: ['cjs', 'esm'],
