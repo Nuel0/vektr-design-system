@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-brand="default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vektr Design System - Component Showcase</title>
+  <link rel="stylesheet" href="../dist/styles.css">
+  <style>
+    body {
+      padding: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .controls {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    section {
+      margin-bottom: 48px;
+    }
+    .component-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1 class="text-display-lg">Vektr Design System</h1>
+      <p class="text-paragraph-lg" style="color: var(--text-secondary);">Interactive 25-Component Showcase & Token Testbed</p>
+    </div>
+    <div class="controls">
+      <div>
+        <label class="vektr-label">Theme</label>
+        <select id="themeSelect" class="vektr-input">
+          <option value="light">Light Mode</option>
+          <option value="dark">Dark Mode</option>
+        </select>
+      </div>
+      <div>
+        <label class="vektr-label">Brand</label>
+        <select id="brandSelect" class="vektr-input">
+          <option value="default">Default Brand (Indigo)</option>
+          <option value="fintech">Fintech (Blue)</option>
+          <option value="health-tech">HealthTech (Teal)</option>
+          <option value="hospitality">Hospitality (Rose)</option>
+          <option value="edtech">EdTech (Amber)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Buttons -->
+    <section>
+      <h2 class="text-header-md">1. Button Component</h2>
+      <div class="component-row">
+        <button class="vektr-button" data-variant="primary" data-size="md">Primary Button</button>
+        <button class="vektr-button" data-variant="secondary" data-size="md">Secondary Button</button>
+        <button class="vektr-button" data-variant="danger" data-size="md">Danger Button</button>
+        <button class="vektr-button" data-variant="ghost" data-size="md">Ghost Button</button>
+        <button class="vektr-button" data-variant="outline" data-size="md">Outline Button</button>
+        <button class="vektr-button" data-variant="primary" data-disabled="true">Disabled</button>
+      </div>
+    </section>
+
+    <!-- Badges -->
+    <section>
+      <h2 class="text-header-md">2. Badge Component</h2>
+      <div class="component-row">
+        <span class="vektr-badge" data-variant="success">Success</span>
+        <span class="vektr-badge" data-variant="warning">Warning</span>
+        <span class="vektr-badge" data-variant="danger">Danger</span>
+        <span class="vektr-badge" data-variant="info">Info</span>
+        <span class="vektr-badge" data-variant="neutral">Neutral</span>
+      </div>
+    </section>
+
+    <!-- Inputs & Textarea -->
+    <section>
+      <h2 class="text-header-md">3. Input & Textarea Components</h2>
+      <div style="max-width: 400px; display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
+        <div class="vektr-input-wrapper">
+          <label class="vektr-input-label">Email Address</label>
+          <input class="vektr-input" placeholder="name@company.com">
+          <span class="vektr-input-helper-text">We'll send your invoice here.</span>
+        </div>
+        <div class="vektr-textarea-wrapper">
+          <label class="vektr-textarea-label">Feedback</label>
+          <textarea class="vektr-textarea" placeholder="Tell us what you think..."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section>
+      <h2 class="text-header-md">4. Card Components</h2>
+      <div class="component-row">
+        <div class="vektr-card" data-variant="base" style="width: 320px;">
+          <h3 class="vektr-card-title">Base Card</h3>
+          <p class="vektr-card-description">Standard card surface with thin border and subtle shadow.</p>
+        </div>
+        <div class="vektr-card" data-variant="raised" style="width: 320px;">
+          <h3 class="vektr-card-title">Raised Card</h3>
+          <p class="vektr-card-description">Elevated surface for popovers, modals, and featured content.</p>
+        </div>
+        <div class="vektr-card" data-variant="sunken" style="width: 320px;">
+          <h3 class="vektr-card-title">Sunken Card</h3>
+          <p class="vektr-card-description">Inset surface for wells and secondary groupings.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Controls: Checkbox, Radio, Switch -->
+    <section>
+      <h2 class="text-header-md">5. Form Controls (Checkbox, Radio, Switch)</h2>
+      <div class="component-row" style="gap: 32px;">
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <div class="vektr-checkbox" data-state="checked">✓</div>
+          <span class="vektr-label">Accept Terms</span>
+        </label>
+        <div class="vektr-radio-group">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <div class="vektr-radio-item" data-state="checked"></div>
+            <span class="vektr-label">Option A</span>
+          </label>
+        </div>
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <div class="vektr-switch" data-state="checked">
+            <span class="vektr-switch-thumb"></span>
+          </div>
+          <span class="vektr-label">Enable Notifications</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Alerts -->
+    <section>
+      <h2 class="text-header-md">6. Alert Component</h2>
+      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 600px; margin-top: 16px;">
+        <div class="vektr-alert" data-variant="info">
+          <h5 class="text-header-xs">System Update</h5>
+          <p class="text-body-base">A new version of Vektr Design System is available.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section>
+      <h2 class="text-header-md">7. Table Component</h2>
+      <div class="vektr-table-wrapper" style="margin-top: 16px;">
+        <table class="vektr-table">
+          <thead class="vektr-table-header">
+            <tr>
+              <th class="vektr-table-head">Component</th>
+              <th class="vektr-table-head">Tier</th>
+              <th class="vektr-table-head">Accessibility</th>
+            </tr>
+          </thead>
+          <tbody class="vektr-table-body">
+            <tr class="vektr-table-row">
+              <td class="vektr-table-cell">Button</td>
+              <td class="vektr-table-cell"><span class="vektr-badge" data-variant="info">Tier 3</span></td>
+              <td class="vektr-table-cell">aria-busy, focus-visible</td>
+            </tr>
+            <tr class="vektr-table-row">
+              <td class="vektr-table-cell">Input</td>
+              <td class="vektr-table-cell"><span class="vektr-badge" data-variant="info">Tier 3</span></td>
+              <td class="vektr-table-cell">id/htmlFor, aria-invalid</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const themeSelect = document.getElementById('themeSelect');
+    const brandSelect = document.getElementById('brandSelect');
+
+    themeSelect.addEventListener('change', (e) => {
+      document.documentElement.setAttribute('data-theme', e.target.value);
+    });
+
+    brandSelect.addEventListener('change', (e) => {
+      document.documentElement.setAttribute('data-brand', e.target.value);
+    });
+  </script>
+</body>
+</html>

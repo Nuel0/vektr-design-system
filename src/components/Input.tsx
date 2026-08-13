@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useId } from 'react';
+import { clsx } from 'clsx';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -6,55 +7,50 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   errorText?: string;
 }
 
-export const Input: React.FC<InputProps> = ({
-  label,
-  helperText,
-  errorText,
-  style,
-  className = '',
-  disabled,
-  ...props
-}) => {
-  const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 'var(--space-1, 4px)',
-    width: '100%',
-    fontFamily: 'var(--font-body, inherit)',
-  };
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ label, helperText, errorText, id: customId, className, disabled, ...props }, ref) => {
+    const generatedId = useId();
+    const inputId = customId || generatedId;
+    const helperId = `${inputId}-helper`;
+    const errorId = `${inputId}-error`;
 
-  const labelStyle: React.CSSProperties = {
-    fontSize: 'var(--label-base, 12px)',
-    fontWeight: 600,
-    color: 'var(--text-primary)',
-  };
+    const describedBy = [
+      errorText ? errorId : null,
+      helperText && !errorText ? helperId : null,
+    ]
+      .filter(Boolean)
+      .join(' ') || undefined;
 
-  const inputStyle: React.CSSProperties = {
-    padding: 'var(--spacing-brand-padding, 12px)',
-    borderRadius: 'var(--radius-brand, 8px)',
-    border: `var(--border-width-default, 1.5px) solid ${errorText ? 'var(--status-danger)' : 'var(--border-default)'}`,
-    backgroundColor: disabled ? 'var(--surface-disabled)' : 'var(--surface-base)',
-    color: 'var(--text-primary)',
-    fontSize: 'var(--body-base, 14px)',
-    outline: 'none',
-    transition: 'border-color 0.2s ease-in-out',
-    ...style,
-  };
+    return (
+      <div className={clsx('vektr-input-wrapper', className)} data-disabled={disabled ? 'true' : undefined}>
+        {label && (
+          <label htmlFor={inputId} className="vektr-input-label">
+            {label}
+          </label>
+        )}
+        <input
+          ref={ref}
+          id={inputId}
+          disabled={disabled}
+          aria-invalid={Boolean(errorText)}
+          aria-describedby={describedBy}
+          data-invalid={Boolean(errorText) ? 'true' : undefined}
+          data-disabled={disabled ? 'true' : undefined}
+          className="vektr-input"
+          {...props}
+        />
+        {errorText ? (
+          <span id={errorId} role="alert" className="vektr-input-error-text">
+            {errorText}
+          </span>
+        ) : helperText ? (
+          <span id={helperId} className="vektr-input-helper-text">
+            {helperText}
+          </span>
+        ) : null}
+      </div>
+    );
+  }
+);
 
-  return (
-    <div style={containerStyle} className={`vektr-input-wrapper ${className}`}>
-      {label && <label style={labelStyle}>{label}</label>}
-      <input
-        style={inputStyle}
-        disabled={disabled}
-        className={`vektr-input ${errorText ? 'vektr-input-error' : ''}`}
-        {...props}
-      />
-      {errorText ? (
-        <span style={{ fontSize: 'var(--caption-sm, 11px)', color: 'var(--status-danger-text)' }}>{errorText}</span>
-      ) : helperText ? (
-        <span style={{ fontSize: 'var(--caption-sm, 11px)', color: 'var(--text-muted)' }}>{helperText}</span>
-      ) : null}
-    </div>
-  );
-};
+Input.displayName = 'Input';

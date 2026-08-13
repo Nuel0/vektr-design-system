@@ -1,6 +1,9 @@
 # Node dependencies
 node_modules/
 
+# Build outputs
+dist/
+
 # NPM tarballs & logs
 *.tgz
 *.log

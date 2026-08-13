@@ -1,184 +1,313 @@
-/**
- * Do not edit directly, this file was auto-generated.
- */
-
-export const SurfaceBase = "#FFFFFF";
-export const SurfaceRaised = "#F9FAFB";
-export const SurfaceSunken = "#F3F4F6";
-export const SurfaceOverlay = "rgba(0, 0, 0, 0.5)";
-export const SurfaceInverse = "#111827";
-export const SurfaceSubtle = "#F3F4F6";
-export const TextPrimary = "#111827";
-export const TextSecondary = "#4B5563";
-export const TextMuted = "#9CA3AF";
-export const TextInverse = "#FFFFFF";
-export const TextDisabled = "#D1D5DB";
-export const ActionPrimary = "#4F46E5";
-export const ActionPrimaryHover = "#4338CA";
-export const ActionPrimaryActive = "#3730A3";
-export const ActionDangerHover = "#B91C1C";
-export const ActionDangerActive = "#991B1B";
-export const ActionDanger = "#DC2626";
-export const BorderDefault = "#E5E7EB";
-export const BorderStrong = "#D1D5DB";
-export const BorderFocus = "#4F46E5";
-export const BorderWidthThin = "1px";
-export const BorderWidthDefault = "1.5px";
-export const BorderWidthThick = "2px";
-export const BorderWidthAccent = "3px";
-export const BorderBrandWidth = "1px";
-export const StatusSuccess = "#16A34A";
-export const StatusSuccessBg = "#DCFCE7";
-export const StatusSuccessText = "#166534";
-export const StatusWarning = "#D97706";
-export const StatusWarningBg = "#FEF3C7";
-export const StatusWarningText = "#92400E";
-export const StatusDanger = "#DC2626";
-export const StatusDangerBg = "#FEE2E2";
-export const StatusDangerText = "#991B1B";
-export const StatusInfo = "#2563EB";
-export const StatusInfoBg = "#DBEAFE";
-export const StatusInfoText = "#1E40AF";
-export const ShadowColorSm = "rgba(0, 0, 0, 0.05)";
-export const ShadowColorMd = "rgba(0, 0, 0, 0.1)";
-export const ShadowColorLg = "rgba(0, 0, 0, 0.1)";
-export const ShadowBrandBlur = "8px";
-export const ShadowBrandY = "4px";
-export const IconSubtle = "#D1D5DB";
-export const IconSm = "16px";
-export const IconMd = "20px";
-export const IconLg = "24px";
-export const IconXl = "32px";
-export const Space1 = "4px";
-export const Space2 = "8px";
-export const Space3 = "12px";
-export const Space4 = "16px";
-export const Space5 = "20px";
-export const Space6 = "24px";
-export const Space8 = "32px";
-export const Space10 = "40px";
-export const Space12 = "48px";
-export const Space16 = "64px";
-export const Space20 = "80px";
-export const Space05 = "2px";
-export const Space075 = "3px";
-export const Space15 = "6px";
-export const Space25 = "10px";
-export const RadiusNone = "0px";
-export const RadiusSm = "4px";
-export const RadiusMd = "8px";
-export const RadiusLg = "16px";
-export const RadiusXl = "40px";
-export const RadiusXxl = "48px";
-export const RadiusFull = "9999px";
-export const RadiusBrand = "8px";
-export const DisplayLg = "48px";
-export const DisplayXl = "56px";
-export const Display2xl = "64px";
-export const HeaderXs = "20px";
-export const HeaderSm = "24px";
-export const HeaderMd = "28px";
-export const HeaderLg = "32px";
-export const HeaderXl = "40px";
-export const ParagraphSm = "14px";
-export const ParagraphBase = "16px";
-export const ParagraphLg = "18px";
-export const BodySm = "12px";
-export const BodyBase = "14px";
-export const BodyLg = "16px";
-export const CaptionSm = "11px";
-export const CaptionBase = "12px";
-export const FooterSm = "11px";
-export const FooterBase = "13px";
-export const LabelBase = "12px";
-export const TableColCheckbox = "40px";
-export const TableColStatus = "120px";
-export const TableColActions = "64px";
-export const TableColName = "200px";
-export const TableColDate = "100px";
-export const TableColTime = "80px";
-export const LayoutBreakpointMobile = "375px";
-export const LayoutBreakpointTablet = "834px";
-export const LayoutBreakpointDesktop = "1280px";
-export const LayoutBreakpointWide = "1440px";
-export const LayoutContainerMobile = "343px";
-export const LayoutContainerTablet = "704px";
-export const LayoutContainerDesktop = "1200px";
-export const LayoutContainerWide = "1320px";
-export const LayoutGridColumns = "12";
-export const LayoutGridColumnsAlt = "8";
-export const Brand50 = "#EEF2FF";
-export const Brand100 = "#E0E7FF";
-export const Brand200 = "#C7D2FE";
-export const Brand300 = "#A5B4FC";
-export const Brand400 = "#818CF8";
-export const Brand500 = "#6366F1";
-export const Brand600 = "#4F46E5";
-export const Brand700 = "#4338CA";
-export const Brand800 = "#3730A3";
-export const Brand900 = "#312E81";
-export const Neutral50 = "#F8FAFC";
-export const Neutral100 = "#F1F5F9";
-export const Neutral200 = "#E2E8F0";
-export const Neutral300 = "#CBD5E1";
-export const Neutral400 = "#94A3B8";
-export const Neutral500 = "#64748B";
-export const Neutral700 = "#334155";
-export const Neutral900 = "#0F172A";
-export const FontHeading = "Inter";
-export const FontBody = "Inter";
-export const SpacingBrandPadding = "12px";
-export const SpacingBrandGap = "8px";
-export const SpacingBrandCtaPadding = "28px";
-export const ColorGray50 = "#F9FAFB";
-export const ColorGray100 = "#F3F4F6";
-export const ColorGray200 = "#E5E7EB";
-export const ColorGray300 = "#D1D5DB";
-export const ColorGray400 = "#9CA3AF";
-export const ColorGray500 = "#6B7280";
-export const ColorGray600 = "#4B5563";
-export const ColorGray700 = "#374151";
-export const ColorGray800 = "#1F2937";
-export const ColorGray900 = "#111827";
-export const ColorSlate100 = "#F1F5F9";
-export const ColorSlate200 = "#E2E8F0";
-export const ColorSlate300 = "#CBD5E1";
-export const ColorSlate400 = "#94A3B8";
-export const ColorSlate500 = "#64748B";
-export const ColorSlate600 = "#475569";
-export const ColorSlate700 = "#334155";
-export const ColorSlate800 = "#1E293B";
-export const ColorSlate900 = "#0F172A";
-export const ColorSlate950 = "#020617";
-export const ColorGreen100 = "#DCFCE7";
-export const ColorGreen300 = "#86EFAC";
-export const ColorGreen500 = "#22C55E";
-export const ColorGreen600 = "#16A34A";
-export const ColorGreen800 = "#166534";
-export const ColorGreen950 = "#052E16";
-export const ColorRed100 = "#FEE2E2";
-export const ColorRed300 = "#FCA5A5";
-export const ColorRed400 = "#EF4444";
-export const ColorRed600 = "#DC2626";
-export const ColorRed700 = "#B91C1C";
-export const ColorRed800 = "#991B1B";
-export const ColorRed950 = "#450A0A";
-export const ColorAmber100 = "#FEF3C7";
-export const ColorAmber300 = "#FCD34D";
-export const ColorAmber500 = "#F59E0B";
-export const ColorAmber600 = "#D97706";
-export const ColorAmber800 = "#92400E";
-export const ColorAmber950 = "#451A03";
-export const ColorBlue100 = "#DBEAFE";
-export const ColorBlue300 = "#93C5FD";
-export const ColorBlue500 = "#3B82F6";
-export const ColorBlue600 = "#2563EB";
-export const ColorBlue800 = "#1E40AF";
-export const ColorBlue950 = "#172554";
-export const ColorWhite = "#FFFFFF";
-export const ColorBlack = "#000000";
-
-export const typography = {
+// src/tokens/index.ts
+var tokens = {
+  "color": {
+    "gray": {
+      "50": "#F9FAFB",
+      "100": "#F3F4F6",
+      "200": "#E5E7EB",
+      "300": "#D1D5DB",
+      "400": "#9CA3AF",
+      "500": "#6B7280",
+      "600": "#4B5563",
+      "700": "#374151",
+      "800": "#1F2937",
+      "900": "#111827"
+    },
+    "slate": {
+      "100": "#F1F5F9",
+      "200": "#E2E8F0",
+      "300": "#CBD5E1",
+      "400": "#94A3B8",
+      "500": "#64748B",
+      "600": "#475569",
+      "700": "#334155",
+      "800": "#1E293B",
+      "900": "#0F172A",
+      "950": "#020617"
+    },
+    "green": {
+      "100": "#DCFCE7",
+      "300": "#86EFAC",
+      "500": "#22C55E",
+      "600": "#16A34A",
+      "800": "#166534",
+      "950": "#052E16"
+    },
+    "red": {
+      "100": "#FEE2E2",
+      "300": "#FCA5A5",
+      "400": "#EF4444",
+      "600": "#DC2626",
+      "700": "#B91C1C",
+      "800": "#991B1B",
+      "950": "#450A0A"
+    },
+    "amber": {
+      "100": "#FEF3C7",
+      "300": "#FCD34D",
+      "500": "#F59E0B",
+      "600": "#D97706",
+      "800": "#92400E",
+      "950": "#451A03"
+    },
+    "blue": {
+      "100": "#DBEAFE",
+      "300": "#93C5FD",
+      "500": "#3B82F6",
+      "600": "#2563EB",
+      "800": "#1E40AF",
+      "950": "#172554"
+    },
+    "white": "#FFFFFF",
+    "black": "#000000"
+  },
+  "brand": {
+    "50": "#EEF2FF",
+    "100": "#E0E7FF",
+    "200": "#C7D2FE",
+    "300": "#A5B4FC",
+    "400": "#818CF8",
+    "500": "#6366F1",
+    "600": "#4F46E5",
+    "700": "#4338CA",
+    "800": "#3730A3",
+    "900": "#312E81"
+  },
+  "neutral": {
+    "50": "#F8FAFC",
+    "100": "#F1F5F9",
+    "200": "#E2E8F0",
+    "300": "#CBD5E1",
+    "400": "#94A3B8",
+    "500": "#64748B",
+    "600": "#475569",
+    "700": "#334155",
+    "800": "#1E293B",
+    "900": "#0F172A"
+  },
+  "button": {
+    "primary-bg": "Semantic/action/primary",
+    "primary-fg": "Semantic/text/inverse",
+    "primary-border": "Semantic/action/primary",
+    "primary-hover-bg": "Semantic/action/primary-hover",
+    "secondary-bg": "Semantic/surface/raised",
+    "secondary-fg": "Semantic/text/primary",
+    "secondary-border": "Semantic/border/default",
+    "danger-bg": "Semantic/action/danger",
+    "danger-fg": "#ffffff",
+    "danger-border": "Semantic/action/danger",
+    "ghost-bg": "transparent",
+    "ghost-fg": "Semantic/text/primary",
+    "outline-bg": "transparent",
+    "outline-fg": "Semantic/action/primary",
+    "outline-border": "Semantic/action/primary"
+  },
+  "badge": {
+    "success-bg": "Semantic/status/success-bg",
+    "success-text": "Semantic/status/success-text",
+    "success-border": "Semantic/status/success",
+    "warning-bg": "Semantic/status/warning-bg",
+    "warning-text": "Semantic/status/warning-text",
+    "warning-border": "Semantic/status/warning",
+    "danger-bg": "Semantic/status/danger-bg",
+    "danger-text": "Semantic/status/danger-text",
+    "danger-border": "Semantic/status/danger",
+    "info-bg": "Semantic/status/info-bg",
+    "info-text": "Semantic/status/info-text",
+    "info-border": "Semantic/status/info",
+    "neutral-bg": "Semantic/surface/subtle",
+    "neutral-text": "Semantic/text/secondary",
+    "neutral-border": "Semantic/border/default"
+  },
+  "input": {
+    "bg": "Semantic/surface/base",
+    "bg-disabled": "Semantic/surface/subtle",
+    "border": "Semantic/border/default",
+    "border-focus": "Semantic/border/focus",
+    "border-error": "Semantic/status/danger",
+    "text": "Semantic/text/primary",
+    "label-text": "Semantic/text/primary",
+    "helper-text": "Semantic/text/muted",
+    "error-text": "Semantic/status/danger-text"
+  },
+  "card": {
+    "bg": "Semantic/surface/base",
+    "bg-raised": "Semantic/surface/raised",
+    "bg-sunken": "Semantic/surface/sunken",
+    "bg-inverse": "Semantic/surface/inverse",
+    "border": "Semantic/border/default",
+    "text": "Semantic/text/primary",
+    "text-inverse": "Semantic/text/inverse"
+  },
+  "nav": {
+    "bg": "Semantic/surface/base",
+    "text": "Semantic/text/secondary",
+    "text-active": "Semantic/action/primary"
+  },
+  "table": {
+    "header-bg": "Semantic/surface/sunken",
+    "border": "Semantic/border/default"
+  },
+  "modal": {
+    "bg": "Semantic/surface/raised",
+    "overlay": "Semantic/surface/overlay"
+  }
+};
+var darkTokens = {
+  "color": {
+    "gray": {
+      "50": "#F9FAFB",
+      "100": "#F3F4F6",
+      "200": "#E5E7EB",
+      "300": "#D1D5DB",
+      "400": "#9CA3AF",
+      "500": "#6B7280",
+      "600": "#4B5563",
+      "700": "#374151",
+      "800": "#1F2937",
+      "900": "#111827"
+    },
+    "slate": {
+      "100": "#F1F5F9",
+      "200": "#E2E8F0",
+      "300": "#CBD5E1",
+      "400": "#94A3B8",
+      "500": "#64748B",
+      "600": "#475569",
+      "700": "#334155",
+      "800": "#1E293B",
+      "900": "#0F172A",
+      "950": "#020617"
+    },
+    "green": {
+      "100": "#DCFCE7",
+      "300": "#86EFAC",
+      "500": "#22C55E",
+      "600": "#16A34A",
+      "800": "#166534",
+      "950": "#052E16"
+    },
+    "red": {
+      "100": "#FEE2E2",
+      "300": "#FCA5A5",
+      "400": "#EF4444",
+      "600": "#DC2626",
+      "700": "#B91C1C",
+      "800": "#991B1B",
+      "950": "#450A0A"
+    },
+    "amber": {
+      "100": "#FEF3C7",
+      "300": "#FCD34D",
+      "500": "#F59E0B",
+      "600": "#D97706",
+      "800": "#92400E",
+      "950": "#451A03"
+    },
+    "blue": {
+      "100": "#DBEAFE",
+      "300": "#93C5FD",
+      "500": "#3B82F6",
+      "600": "#2563EB",
+      "800": "#1E40AF",
+      "950": "#172554"
+    },
+    "white": "#FFFFFF",
+    "black": "#000000"
+  },
+  "brand": {
+    "50": "#EEF2FF",
+    "100": "#E0E7FF",
+    "200": "#C7D2FE",
+    "300": "#A5B4FC",
+    "400": "#818CF8",
+    "500": "#6366F1",
+    "600": "#4F46E5",
+    "700": "#4338CA",
+    "800": "#3730A3",
+    "900": "#312E81"
+  },
+  "neutral": {
+    "50": "#F8FAFC",
+    "100": "#F1F5F9",
+    "200": "#E2E8F0",
+    "300": "#CBD5E1",
+    "400": "#94A3B8",
+    "500": "#64748B",
+    "600": "#475569",
+    "700": "#334155",
+    "800": "#1E293B",
+    "900": "#0F172A"
+  },
+  "button": {
+    "primary-bg": "Semantic/action/primary",
+    "primary-fg": "Semantic/text/inverse",
+    "primary-border": "Semantic/action/primary",
+    "primary-hover-bg": "Semantic/action/primary-hover",
+    "secondary-bg": "Semantic/surface/raised",
+    "secondary-fg": "Semantic/text/primary",
+    "secondary-border": "Semantic/border/default",
+    "danger-bg": "Semantic/action/danger",
+    "danger-fg": "#ffffff",
+    "danger-border": "Semantic/action/danger",
+    "ghost-bg": "transparent",
+    "ghost-fg": "Semantic/text/primary",
+    "outline-bg": "transparent",
+    "outline-fg": "Semantic/action/primary",
+    "outline-border": "Semantic/action/primary"
+  },
+  "badge": {
+    "success-bg": "Semantic/status/success-bg",
+    "success-text": "Semantic/status/success-text",
+    "success-border": "Semantic/status/success",
+    "warning-bg": "Semantic/status/warning-bg",
+    "warning-text": "Semantic/status/warning-text",
+    "warning-border": "Semantic/status/warning",
+    "danger-bg": "Semantic/status/danger-bg",
+    "danger-text": "Semantic/status/danger-text",
+    "danger-border": "Semantic/status/danger",
+    "info-bg": "Semantic/status/info-bg",
+    "info-text": "Semantic/status/info-text",
+    "info-border": "Semantic/status/info",
+    "neutral-bg": "Semantic/surface/subtle",
+    "neutral-text": "Semantic/text/secondary",
+    "neutral-border": "Semantic/border/default"
+  },
+  "input": {
+    "bg": "Semantic/surface/base",
+    "bg-disabled": "Semantic/surface/subtle",
+    "border": "Semantic/border/default",
+    "border-focus": "Semantic/border/focus",
+    "border-error": "Semantic/status/danger",
+    "text": "Semantic/text/primary",
+    "label-text": "Semantic/text/primary",
+    "helper-text": "Semantic/text/muted",
+    "error-text": "Semantic/status/danger-text"
+  },
+  "card": {
+    "bg": "Semantic/surface/base",
+    "bg-raised": "Semantic/surface/raised",
+    "bg-sunken": "Semantic/surface/sunken",
+    "bg-inverse": "Semantic/surface/inverse",
+    "border": "Semantic/border/default",
+    "text": "Semantic/text/primary",
+    "text-inverse": "Semantic/text/inverse"
+  },
+  "nav": {
+    "bg": "Semantic/surface/base",
+    "text": "Semantic/text/secondary",
+    "text-active": "Semantic/action/primary"
+  },
+  "table": {
+    "header-bg": "Semantic/surface/sunken",
+    "border": "Semantic/border/default"
+  },
+  "modal": {
+    "bg": "Semantic/surface/raised",
+    "overlay": "Semantic/surface/overlay"
+  }
+};
+var typography = {
   "Display": {
     "2xl": {
       "fontFamily": "Inter",
@@ -473,4 +602,11 @@ export const typography = {
       "paragraphSpacing": 0
     }
   }
+};
+var tokens_default = tokens;
+export {
+  darkTokens,
+  tokens_default as default,
+  tokens,
+  typography
 };

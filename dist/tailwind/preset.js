@@ -10,9 +10,9 @@ module.exports = {
   "300": "#CBD5E1",
   "400": "#94A3B8",
   "500": "#64748B",
-  "600": "#4F46E5",
+  "600": "#475569",
   "700": "#334155",
-  "800": "#3730A3",
+  "800": "#1E293B",
   "900": "#0F172A",
   "gray": {
     "50": "#F9FAFB",
@@ -74,67 +74,12 @@ module.exports = {
   "white": "#FFFFFF",
   "black": "#000000"
 },
-      surface: {
-  "base": "#FFFFFF",
-  "raised": "#F9FAFB",
-  "sunken": "#F3F4F6",
-  "overlay": "rgba(0, 0, 0, 0.5)",
-  "inverse": "#111827",
-  "subtle": "#F3F4F6"
-},
-      textColor: {
-  "primary": "#111827",
-  "secondary": "#4B5563",
-  "muted": "#9CA3AF",
-  "inverse": "#FFFFFF",
-  "disabled": "#D1D5DB"
-},
-      borderColor: {
-  "default": "#E5E7EB",
-  "strong": "#D1D5DB",
-  "focus": "#4F46E5",
-  "width-thin": "1px",
-  "width-default": "1.5px",
-  "width-thick": "2px",
-  "width-accent": "3px",
-  "brand-width": "1px"
-},
-      spacing: {
-  "1": "4px",
-  "2": "8px",
-  "3": "12px",
-  "4": "16px",
-  "5": "20px",
-  "6": "24px",
-  "8": "32px",
-  "10": "40px",
-  "12": "48px",
-  "16": "64px",
-  "20": "80px",
-  "0-5": "2px",
-  "0-75": "3px",
-  "1-5": "6px",
-  "2-5": "10px"
-},
-      borderRadius: {
-  "none": "0px",
-  "sm": "4px",
-  "md": "8px",
-  "lg": "16px",
-  "xl": "40px",
-  "xxl": "48px",
-  "full": "9999px",
-  "brand": "8px"
-},
-      fontSize: {
-  "lg": "16px",
-  "xl": "40px",
-  "2xl": "64px",
-  "xs": "20px",
-  "sm": "12px",
-  "md": "28px",
-  "base": "14px"
-},
+      surface: {},
+      textColor: {},
+      borderColor: {},
+      spacing: {},
+      borderRadius: {},
+      fontSize: {},
       typography: {
   "Display": {
     "2xl": {

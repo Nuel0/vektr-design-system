@@ -1,108 +1,89 @@
-# Vektr Design System
+# Vektr Design System (`vektr-design-system`)
 
-Official design tokens, React components, and multi-theme presets for **Vektr Design System**, exported and compiled directly from Figma Variables.
+> Official 3-Tier Design Tokens, React Component Library & Multi-Theme System.
 
----
-
-## 📦 Package Formats Exposed
-
-- 🎨 **CSS Variables**: `import 'vektr-design-system/css'`
-- ⚛️ **React Components**: `import { Button, Card, Badge, Input, VektrProvider, useVektrTheme } from 'vektr-design-system/react'`
-- 📦 **JS / TS Design Tokens**: `import tokens, { darkTokens } from 'vektr-design-system'`
-- 📄 **Normalized JSON**: `import tokens from 'vektr-design-system/json'`
-- 🌊 **Tailwind CSS Preset**: Add to `tailwind.config.js` presets
+[![npm version](https://img.shields.io/npm/v/vektr-design-system.svg)](https://www.npmjs.com/package/vektr-design-system)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
 
-## ⚛️ Reusable React Components
+## 🚀 Quick Start in 5 Copy-Pasteable Steps
 
-### 1. Wrap your app with `VektrProvider`
+### 1. Install Package & Peer Dependencies
+```bash
+npm install vektr-design-system react react-dom
+```
+
+### 2. Import the Stylesheet
+Import the unified stylesheet at the entry point of your application (e.g. `src/index.js`, `src/App.tsx`, or `app/layout.tsx`):
+```typescript
+import 'vektr-design-system/css';
+```
+
+### 3. Add Theme & Brand Attributes to `<html>`
+Set the initial theme (`light` or `dark`) and active brand palette (`default`, `fintech`, `health-tech`, `hospitality`, `edtech`) on your root HTML element:
+```html
+<html data-theme="light" data-brand="fintech">
+```
+
+### 4. Wrap Your Application in `VektrProvider`
 ```tsx
 import React from 'react';
-import 'vektr-design-system/css';
-import { VektrProvider, Button, Card, Badge, Input, useVektrTheme } from 'vektr-design-system/react';
+import { VektrProvider } from 'vektr-design-system/react';
 
-export function App() {
+export function App({ children }: { children: React.ReactNode }) {
   return (
     <VektrProvider defaultTheme="light" defaultBrand="fintech">
-      <Dashboard />
+      {children}
     </VektrProvider>
   );
 }
 ```
 
-### 2. Use UI Components
-
-#### Button
+### 5. Use Components in Your UI
 ```tsx
-<Button variant="primary" size="md">Click Me</Button>
-<Button variant="secondary" size="sm">Secondary</Button>
-<Button variant="danger" isLoading>Processing...</Button>
-```
+import React from 'react';
+import { Button, Input, Card, CardHeader, CardTitle, CardBody, Badge } from 'vektr-design-system/react';
 
-#### Card
-```tsx
-<Card variant="raised">
-  <CardHeader>
-    <h3>Vektr Analytics</h3>
-  </CardHeader>
-  <CardBody>
-    <p>Card content styled with design tokens.</p>
-  </CardBody>
-  <CardFooter>
-    <Button variant="primary">View Details</Button>
-  </CardFooter>
-</Card>
-```
-
-#### Status Badge
-```tsx
-<Badge variant="success">Active</Badge>
-<Badge variant="warning">Pending</Badge>
-<Badge variant="danger">Failed</Badge>
-```
-
-#### Input Field
-```tsx
-<Input 
-  label="Email Address"
-  placeholder="name@company.com"
-  helperText="We'll never share your email."
-/>
-```
-
-#### Dynamic Theme & Sub-Brand Switcher
-```tsx
-function ThemeToggle() {
-  const { theme, toggleTheme, setBrand } = useVektrTheme();
-
+export function UserDashboard() {
   return (
-    <div>
-      <Button onClick={toggleTheme}>
-        Current Theme: {theme.toUpperCase()}
-      </Button>
-      <Button onClick={() => setBrand('health-tech')}>Switch to Health-Tech</Button>
-    </div>
+    <Card variant="raised">
+      <CardHeader>
+        <CardTitle>Welcome Back</CardTitle>
+        <Badge variant="success">Active Plan</Badge>
+      </CardHeader>
+      <CardBody>
+        <Input label="Search Projects" placeholder="Type a keyword..." />
+        <Button variant="primary" style={{ marginTop: '16px' }}>
+          Create New Project
+        </Button>
+      </CardBody>
+    </Card>
   );
 }
 ```
 
 ---
 
-## 🔄 Building & Updating Tokens & Components
+## 🎨 Token & Brand Architecture
 
-```bash
-# Compile tokens & React components
-npm run build
-```
+Vektr enforces a strict **3-Tier Custom Property Architecture**:
+- **Tier 1 (Primitives)**: `--brand-50..900`, `--neutral-50..900` defined per `[data-brand]` block.
+- **Tier 2 (Semantics)**: `--action-primary`, `--surface-base`, `--text-primary` defined per `[data-theme="light|dark"]` block.
+- **Tier 3 (Components)**: `--button-primary-bg`, `--input-bg`, `--card-bg` consumed directly by components.
+
+Swapping `[data-brand="fintech"]` updates all primitive step palettes, automatically cascading through semantic custom properties down to component styles across the entire application.
 
 ---
 
-## 📤 Publishing to NPM / GitHub
+## 📦 Package Exports & Subpaths
 
-```bash
-# Push to GitHub
-git add .
-git commit -m "feat: add React reusable components"
-git push origin main
-```
+- **`vektr-design-system`**: Design token JavaScript objects (`tokens`, `darkTokens`, `typography`).
+- **`vektr-design-system/react`**: 25 React UI components (`Button`, `Input`, `Select`, `Dialog`, `Card`, etc.).
+- **`vektr-design-system/css`**: Unified stylesheet entry emitted with CSS Cascade Layers (`@layer vektr.reset, vektr.tokens, vektr.components, vektr.utilities`).
+- **`vektr-design-system/tailwind`**: Tailwind CSS theme extension preset.
+
+---
+
+## 📄 License
+[MIT](LICENSE)

@@ -1,186 +1,340 @@
-/**
- * Do not edit directly, this file was auto-generated.
- */
-
-module.exports = {
-  SurfaceBase: "#FFFFFF",
-  SurfaceRaised: "#F9FAFB",
-  SurfaceSunken: "#F3F4F6",
-  SurfaceOverlay: "rgba(0, 0, 0, 0.5)",
-  SurfaceInverse: "#111827",
-  SurfaceSubtle: "#F3F4F6",
-  TextPrimary: "#111827",
-  TextSecondary: "#4B5563",
-  TextMuted: "#9CA3AF",
-  TextInverse: "#FFFFFF",
-  TextDisabled: "#D1D5DB",
-  ActionPrimary: "#4F46E5",
-  ActionPrimaryHover: "#4338CA",
-  ActionPrimaryActive: "#3730A3",
-  ActionDangerHover: "#B91C1C",
-  ActionDangerActive: "#991B1B",
-  ActionDanger: "#DC2626",
-  BorderDefault: "#E5E7EB",
-  BorderStrong: "#D1D5DB",
-  BorderFocus: "#4F46E5",
-  BorderWidthThin: "1px",
-  BorderWidthDefault: "1.5px",
-  BorderWidthThick: "2px",
-  BorderWidthAccent: "3px",
-  BorderBrandWidth: "1px",
-  StatusSuccess: "#16A34A",
-  StatusSuccessBg: "#DCFCE7",
-  StatusSuccessText: "#166534",
-  StatusWarning: "#D97706",
-  StatusWarningBg: "#FEF3C7",
-  StatusWarningText: "#92400E",
-  StatusDanger: "#DC2626",
-  StatusDangerBg: "#FEE2E2",
-  StatusDangerText: "#991B1B",
-  StatusInfo: "#2563EB",
-  StatusInfoBg: "#DBEAFE",
-  StatusInfoText: "#1E40AF",
-  ShadowColorSm: "rgba(0, 0, 0, 0.05)",
-  ShadowColorMd: "rgba(0, 0, 0, 0.1)",
-  ShadowColorLg: "rgba(0, 0, 0, 0.1)",
-  ShadowBrandBlur: "8px",
-  ShadowBrandY: "4px",
-  IconSubtle: "#D1D5DB",
-  IconSm: "16px",
-  IconMd: "20px",
-  IconLg: "24px",
-  IconXl: "32px",
-  Space1: "4px",
-  Space2: "8px",
-  Space3: "12px",
-  Space4: "16px",
-  Space5: "20px",
-  Space6: "24px",
-  Space8: "32px",
-  Space10: "40px",
-  Space12: "48px",
-  Space16: "64px",
-  Space20: "80px",
-  Space05: "2px",
-  Space075: "3px",
-  Space15: "6px",
-  Space25: "10px",
-  RadiusNone: "0px",
-  RadiusSm: "4px",
-  RadiusMd: "8px",
-  RadiusLg: "16px",
-  RadiusXl: "40px",
-  RadiusXxl: "48px",
-  RadiusFull: "9999px",
-  RadiusBrand: "8px",
-  DisplayLg: "48px",
-  DisplayXl: "56px",
-  Display2xl: "64px",
-  HeaderXs: "20px",
-  HeaderSm: "24px",
-  HeaderMd: "28px",
-  HeaderLg: "32px",
-  HeaderXl: "40px",
-  ParagraphSm: "14px",
-  ParagraphBase: "16px",
-  ParagraphLg: "18px",
-  BodySm: "12px",
-  BodyBase: "14px",
-  BodyLg: "16px",
-  CaptionSm: "11px",
-  CaptionBase: "12px",
-  FooterSm: "11px",
-  FooterBase: "13px",
-  LabelBase: "12px",
-  TableColCheckbox: "40px",
-  TableColStatus: "120px",
-  TableColActions: "64px",
-  TableColName: "200px",
-  TableColDate: "100px",
-  TableColTime: "80px",
-  LayoutBreakpointMobile: "375px",
-  LayoutBreakpointTablet: "834px",
-  LayoutBreakpointDesktop: "1280px",
-  LayoutBreakpointWide: "1440px",
-  LayoutContainerMobile: "343px",
-  LayoutContainerTablet: "704px",
-  LayoutContainerDesktop: "1200px",
-  LayoutContainerWide: "1320px",
-  LayoutGridColumns: "12",
-  LayoutGridColumnsAlt: "8",
-  Brand50: "#EEF2FF",
-  Brand100: "#E0E7FF",
-  Brand200: "#C7D2FE",
-  Brand300: "#A5B4FC",
-  Brand400: "#818CF8",
-  Brand500: "#6366F1",
-  Brand600: "#4F46E5",
-  Brand700: "#4338CA",
-  Brand800: "#3730A3",
-  Brand900: "#312E81",
-  Neutral50: "#F8FAFC",
-  Neutral100: "#F1F5F9",
-  Neutral200: "#E2E8F0",
-  Neutral300: "#CBD5E1",
-  Neutral400: "#94A3B8",
-  Neutral500: "#64748B",
-  Neutral700: "#334155",
-  Neutral900: "#0F172A",
-  FontHeading: "Inter",
-  FontBody: "Inter",
-  SpacingBrandPadding: "12px",
-  SpacingBrandGap: "8px",
-  SpacingBrandCtaPadding: "28px",
-  ColorGray50: "#F9FAFB",
-  ColorGray100: "#F3F4F6",
-  ColorGray200: "#E5E7EB",
-  ColorGray300: "#D1D5DB",
-  ColorGray400: "#9CA3AF",
-  ColorGray500: "#6B7280",
-  ColorGray600: "#4B5563",
-  ColorGray700: "#374151",
-  ColorGray800: "#1F2937",
-  ColorGray900: "#111827",
-  ColorSlate100: "#F1F5F9",
-  ColorSlate200: "#E2E8F0",
-  ColorSlate300: "#CBD5E1",
-  ColorSlate400: "#94A3B8",
-  ColorSlate500: "#64748B",
-  ColorSlate600: "#475569",
-  ColorSlate700: "#334155",
-  ColorSlate800: "#1E293B",
-  ColorSlate900: "#0F172A",
-  ColorSlate950: "#020617",
-  ColorGreen100: "#DCFCE7",
-  ColorGreen300: "#86EFAC",
-  ColorGreen500: "#22C55E",
-  ColorGreen600: "#16A34A",
-  ColorGreen800: "#166534",
-  ColorGreen950: "#052E16",
-  ColorRed100: "#FEE2E2",
-  ColorRed300: "#FCA5A5",
-  ColorRed400: "#EF4444",
-  ColorRed600: "#DC2626",
-  ColorRed700: "#B91C1C",
-  ColorRed800: "#991B1B",
-  ColorRed950: "#450A0A",
-  ColorAmber100: "#FEF3C7",
-  ColorAmber300: "#FCD34D",
-  ColorAmber500: "#F59E0B",
-  ColorAmber600: "#D97706",
-  ColorAmber800: "#92400E",
-  ColorAmber950: "#451A03",
-  ColorBlue100: "#DBEAFE",
-  ColorBlue300: "#93C5FD",
-  ColorBlue500: "#3B82F6",
-  ColorBlue600: "#2563EB",
-  ColorBlue800: "#1E40AF",
-  ColorBlue950: "#172554",
-  ColorWhite: "#FFFFFF",
-  ColorBlack: "#000000",
+"use strict";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
 };
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-module.exports.typography = {
+// src/tokens/index.ts
+var tokens_exports = {};
+__export(tokens_exports, {
+  darkTokens: () => darkTokens,
+  default: () => tokens_default,
+  tokens: () => tokens,
+  typography: () => typography
+});
+module.exports = __toCommonJS(tokens_exports);
+var tokens = {
+  "color": {
+    "gray": {
+      "50": "#F9FAFB",
+      "100": "#F3F4F6",
+      "200": "#E5E7EB",
+      "300": "#D1D5DB",
+      "400": "#9CA3AF",
+      "500": "#6B7280",
+      "600": "#4B5563",
+      "700": "#374151",
+      "800": "#1F2937",
+      "900": "#111827"
+    },
+    "slate": {
+      "100": "#F1F5F9",
+      "200": "#E2E8F0",
+      "300": "#CBD5E1",
+      "400": "#94A3B8",
+      "500": "#64748B",
+      "600": "#475569",
+      "700": "#334155",
+      "800": "#1E293B",
+      "900": "#0F172A",
+      "950": "#020617"
+    },
+    "green": {
+      "100": "#DCFCE7",
+      "300": "#86EFAC",
+      "500": "#22C55E",
+      "600": "#16A34A",
+      "800": "#166534",
+      "950": "#052E16"
+    },
+    "red": {
+      "100": "#FEE2E2",
+      "300": "#FCA5A5",
+      "400": "#EF4444",
+      "600": "#DC2626",
+      "700": "#B91C1C",
+      "800": "#991B1B",
+      "950": "#450A0A"
+    },
+    "amber": {
+      "100": "#FEF3C7",
+      "300": "#FCD34D",
+      "500": "#F59E0B",
+      "600": "#D97706",
+      "800": "#92400E",
+      "950": "#451A03"
+    },
+    "blue": {
+      "100": "#DBEAFE",
+      "300": "#93C5FD",
+      "500": "#3B82F6",
+      "600": "#2563EB",
+      "800": "#1E40AF",
+      "950": "#172554"
+    },
+    "white": "#FFFFFF",
+    "black": "#000000"
+  },
+  "brand": {
+    "50": "#EEF2FF",
+    "100": "#E0E7FF",
+    "200": "#C7D2FE",
+    "300": "#A5B4FC",
+    "400": "#818CF8",
+    "500": "#6366F1",
+    "600": "#4F46E5",
+    "700": "#4338CA",
+    "800": "#3730A3",
+    "900": "#312E81"
+  },
+  "neutral": {
+    "50": "#F8FAFC",
+    "100": "#F1F5F9",
+    "200": "#E2E8F0",
+    "300": "#CBD5E1",
+    "400": "#94A3B8",
+    "500": "#64748B",
+    "600": "#475569",
+    "700": "#334155",
+    "800": "#1E293B",
+    "900": "#0F172A"
+  },
+  "button": {
+    "primary-bg": "Semantic/action/primary",
+    "primary-fg": "Semantic/text/inverse",
+    "primary-border": "Semantic/action/primary",
+    "primary-hover-bg": "Semantic/action/primary-hover",
+    "secondary-bg": "Semantic/surface/raised",
+    "secondary-fg": "Semantic/text/primary",
+    "secondary-border": "Semantic/border/default",
+    "danger-bg": "Semantic/action/danger",
+    "danger-fg": "#ffffff",
+    "danger-border": "Semantic/action/danger",
+    "ghost-bg": "transparent",
+    "ghost-fg": "Semantic/text/primary",
+    "outline-bg": "transparent",
+    "outline-fg": "Semantic/action/primary",
+    "outline-border": "Semantic/action/primary"
+  },
+  "badge": {
+    "success-bg": "Semantic/status/success-bg",
+    "success-text": "Semantic/status/success-text",
+    "success-border": "Semantic/status/success",
+    "warning-bg": "Semantic/status/warning-bg",
+    "warning-text": "Semantic/status/warning-text",
+    "warning-border": "Semantic/status/warning",
+    "danger-bg": "Semantic/status/danger-bg",
+    "danger-text": "Semantic/status/danger-text",
+    "danger-border": "Semantic/status/danger",
+    "info-bg": "Semantic/status/info-bg",
+    "info-text": "Semantic/status/info-text",
+    "info-border": "Semantic/status/info",
+    "neutral-bg": "Semantic/surface/subtle",
+    "neutral-text": "Semantic/text/secondary",
+    "neutral-border": "Semantic/border/default"
+  },
+  "input": {
+    "bg": "Semantic/surface/base",
+    "bg-disabled": "Semantic/surface/subtle",
+    "border": "Semantic/border/default",
+    "border-focus": "Semantic/border/focus",
+    "border-error": "Semantic/status/danger",
+    "text": "Semantic/text/primary",
+    "label-text": "Semantic/text/primary",
+    "helper-text": "Semantic/text/muted",
+    "error-text": "Semantic/status/danger-text"
+  },
+  "card": {
+    "bg": "Semantic/surface/base",
+    "bg-raised": "Semantic/surface/raised",
+    "bg-sunken": "Semantic/surface/sunken",
+    "bg-inverse": "Semantic/surface/inverse",
+    "border": "Semantic/border/default",
+    "text": "Semantic/text/primary",
+    "text-inverse": "Semantic/text/inverse"
+  },
+  "nav": {
+    "bg": "Semantic/surface/base",
+    "text": "Semantic/text/secondary",
+    "text-active": "Semantic/action/primary"
+  },
+  "table": {
+    "header-bg": "Semantic/surface/sunken",
+    "border": "Semantic/border/default"
+  },
+  "modal": {
+    "bg": "Semantic/surface/raised",
+    "overlay": "Semantic/surface/overlay"
+  }
+};
+var darkTokens = {
+  "color": {
+    "gray": {
+      "50": "#F9FAFB",
+      "100": "#F3F4F6",
+      "200": "#E5E7EB",
+      "300": "#D1D5DB",
+      "400": "#9CA3AF",
+      "500": "#6B7280",
+      "600": "#4B5563",
+      "700": "#374151",
+      "800": "#1F2937",
+      "900": "#111827"
+    },
+    "slate": {
+      "100": "#F1F5F9",
+      "200": "#E2E8F0",
+      "300": "#CBD5E1",
+      "400": "#94A3B8",
+      "500": "#64748B",
+      "600": "#475569",
+      "700": "#334155",
+      "800": "#1E293B",
+      "900": "#0F172A",
+      "950": "#020617"
+    },
+    "green": {
+      "100": "#DCFCE7",
+      "300": "#86EFAC",
+      "500": "#22C55E",
+      "600": "#16A34A",
+      "800": "#166534",
+      "950": "#052E16"
+    },
+    "red": {
+      "100": "#FEE2E2",
+      "300": "#FCA5A5",
+      "400": "#EF4444",
+      "600": "#DC2626",
+      "700": "#B91C1C",
+      "800": "#991B1B",
+      "950": "#450A0A"
+    },
+    "amber": {
+      "100": "#FEF3C7",
+      "300": "#FCD34D",
+      "500": "#F59E0B",
+      "600": "#D97706",
+      "800": "#92400E",
+      "950": "#451A03"
+    },
+    "blue": {
+      "100": "#DBEAFE",
+      "300": "#93C5FD",
+      "500": "#3B82F6",
+      "600": "#2563EB",
+      "800": "#1E40AF",
+      "950": "#172554"
+    },
+    "white": "#FFFFFF",
+    "black": "#000000"
+  },
+  "brand": {
+    "50": "#EEF2FF",
+    "100": "#E0E7FF",
+    "200": "#C7D2FE",
+    "300": "#A5B4FC",
+    "400": "#818CF8",
+    "500": "#6366F1",
+    "600": "#4F46E5",
+    "700": "#4338CA",
+    "800": "#3730A3",
+    "900": "#312E81"
+  },
+  "neutral": {
+    "50": "#F8FAFC",
+    "100": "#F1F5F9",
+    "200": "#E2E8F0",
+    "300": "#CBD5E1",
+    "400": "#94A3B8",
+    "500": "#64748B",
+    "600": "#475569",
+    "700": "#334155",
+    "800": "#1E293B",
+    "900": "#0F172A"
+  },
+  "button": {
+    "primary-bg": "Semantic/action/primary",
+    "primary-fg": "Semantic/text/inverse",
+    "primary-border": "Semantic/action/primary",
+    "primary-hover-bg": "Semantic/action/primary-hover",
+    "secondary-bg": "Semantic/surface/raised",
+    "secondary-fg": "Semantic/text/primary",
+    "secondary-border": "Semantic/border/default",
+    "danger-bg": "Semantic/action/danger",
+    "danger-fg": "#ffffff",
+    "danger-border": "Semantic/action/danger",
+    "ghost-bg": "transparent",
+    "ghost-fg": "Semantic/text/primary",
+    "outline-bg": "transparent",
+    "outline-fg": "Semantic/action/primary",
+    "outline-border": "Semantic/action/primary"
+  },
+  "badge": {
+    "success-bg": "Semantic/status/success-bg",
+    "success-text": "Semantic/status/success-text",
+    "success-border": "Semantic/status/success",
+    "warning-bg": "Semantic/status/warning-bg",
+    "warning-text": "Semantic/status/warning-text",
+    "warning-border": "Semantic/status/warning",
+    "danger-bg": "Semantic/status/danger-bg",
+    "danger-text": "Semantic/status/danger-text",
+    "danger-border": "Semantic/status/danger",
+    "info-bg": "Semantic/status/info-bg",
+    "info-text": "Semantic/status/info-text",
+    "info-border": "Semantic/status/info",
+    "neutral-bg": "Semantic/surface/subtle",
+    "neutral-text": "Semantic/text/secondary",
+    "neutral-border": "Semantic/border/default"
+  },
+  "input": {
+    "bg": "Semantic/surface/base",
+    "bg-disabled": "Semantic/surface/subtle",
+    "border": "Semantic/border/default",
+    "border-focus": "Semantic/border/focus",
+    "border-error": "Semantic/status/danger",
+    "text": "Semantic/text/primary",
+    "label-text": "Semantic/text/primary",
+    "helper-text": "Semantic/text/muted",
+    "error-text": "Semantic/status/danger-text"
+  },
+  "card": {
+    "bg": "Semantic/surface/base",
+    "bg-raised": "Semantic/surface/raised",
+    "bg-sunken": "Semantic/surface/sunken",
+    "bg-inverse": "Semantic/surface/inverse",
+    "border": "Semantic/border/default",
+    "text": "Semantic/text/primary",
+    "text-inverse": "Semantic/text/inverse"
+  },
+  "nav": {
+    "bg": "Semantic/surface/base",
+    "text": "Semantic/text/secondary",
+    "text-active": "Semantic/action/primary"
+  },
+  "table": {
+    "header-bg": "Semantic/surface/sunken",
+    "border": "Semantic/border/default"
+  },
+  "modal": {
+    "bg": "Semantic/surface/raised",
+    "overlay": "Semantic/surface/overlay"
+  }
+};
+var typography = {
   "Display": {
     "2xl": {
       "fontFamily": "Inter",
@@ -476,3 +630,10 @@ module.exports.typography = {
     }
   }
 };
+var tokens_default = tokens;
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  darkTokens,
+  tokens,
+  typography
+});
