@@ -65,6 +65,40 @@ export function UserDashboard() {
 
 ---
 
+## 🧩 Complete Component Catalog (25 Components)
+
+Every component is exported from `vektr-design-system/react` and supports `React.forwardRef`, `clsx` class merging, `asChild` composition (via Radix Slot where applicable), and accessibility wiring.
+
+| Category | Component | Import Example | Key Props & Variants |
+| :--- | :--- | :--- | :--- |
+| **Actions** | `Button` | `import { Button } from 'vektr-design-system/react'` | `variant` (`primary`, `secondary`, `danger`, `ghost`, `outline`), `size` (`sm`, `md`, `lg`), `isLoading`, `asChild`, `leftIcon`, `rightIcon` |
+| | `Checkbox` | `import { Checkbox } from 'vektr-design-system/react'` | `checked`, `defaultChecked`, `onCheckedChange`, `disabled` |
+| | `RadioGroup` | `import { RadioGroup, RadioGroupItem } from 'vektr-design-system/react'` | `value`, `defaultValue`, `onValueChange`, `disabled` |
+| | `Switch` | `import { Switch } from 'vektr-design-system/react'` | `checked`, `defaultChecked`, `onCheckedChange`, `disabled` |
+| **Forms** | `Input` | `import { Input } from 'vektr-design-system/react'` | `label`, `helperText`, `errorText`, `disabled`, `id` |
+| | `Textarea` | `import { Textarea } from 'vektr-design-system/react'` | `label`, `helperText`, `errorText`, `disabled`, `id` |
+| | `Select` | `import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from 'vektr-design-system/react'` | `value`, `onValueChange`, `placeholder`, `disabled` |
+| | `Label` | `import { Label } from 'vektr-design-system/react'` | `htmlFor` |
+| **Layout** | `Card` | `import { Card, CardHeader, CardTitle, CardDescription, CardBody, CardFooter } from 'vektr-design-system/react'` | `variant` (`base`, `raised`, `sunken`, `inverse`), `asChild` |
+| | `Separator` | `import { Separator } from 'vektr-design-system/react'` | `orientation` (`horizontal`, `vertical`), `decorative` |
+| | `Accordion` | `import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from 'vektr-design-system/react'` | `type` (`single`, `multiple`), `collapsible` |
+| **Status** | `Badge` | `import { Badge } from 'vektr-design-system/react'` | `variant` (`success`, `warning`, `danger`, `info`, `neutral`), `asChild` |
+| | `Alert` | `import { Alert, AlertTitle, AlertDescription } from 'vektr-design-system/react'` | `variant` (`info`, `success`, `warning`, `danger`) |
+| | `Avatar` | `import { Avatar, AvatarImage, AvatarFallback } from 'vektr-design-system/react'` | `src`, `alt`, `delayMs` |
+| | `Skeleton` | `import { Skeleton } from 'vektr-design-system/react'` | standard `className` & `style` props |
+| | `Toast` | `import { ToastProvider, useToast } from 'vektr-design-system/react'` | `toast({ title, description, variant })` |
+| **Overlays** | `Dialog` | `import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from 'vektr-design-system/react'` | `open`, `onOpenChange` |
+| | `Drawer` | `import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription } from 'vektr-design-system/react'` | `side` (`left`, `right`, `top`, `bottom`) |
+| | `Dropdown` | `import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from 'vektr-design-system/react'` | `open`, `onOpenChange` |
+| | `Tooltip` | `import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from 'vektr-design-system/react'` | `delayDuration`, `side` |
+| | `Popover` | `import { Popover, PopoverTrigger, PopoverContent } from 'vektr-design-system/react'` | `align`, `sideOffset` |
+| **Navigation** | `Tabs` | `import { Tabs, TabsList, TabsTrigger, TabsContent } from 'vektr-design-system/react'` | `value`, `defaultValue`, `onValueChange` |
+| | `Table` | `import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from 'vektr-design-system/react'` | standard table markup subcomponents |
+| | `Pagination` | `import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext } from 'vektr-design-system/react'` | `isActive` |
+| | `Breadcrumb` | `import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from 'vektr-design-system/react'` | breadcrumb markup subcomponents |
+
+---
+
 ## 🎨 Token & Brand Architecture
 
 Vektr enforces a strict **3-Tier Custom Property Architecture**:
@@ -79,9 +113,12 @@ Swapping `[data-brand="fintech"]` updates all primitive step palettes, automatic
 ## 📦 Package Exports & Subpaths
 
 - **`vektr-design-system`**: Design token JavaScript objects (`tokens`, `darkTokens`, `typography`).
-- **`vektr-design-system/react`**: 25 React UI components (`Button`, `Input`, `Select`, `Dialog`, `Card`, etc.).
+- **`vektr-design-system/react`**: 25 production React UI components (`Button`, `Input`, `Select`, `Dialog`, `Card`, etc.).
 - **`vektr-design-system/css`**: Unified stylesheet entry emitted with CSS Cascade Layers (`@layer vektr.reset, vektr.tokens, vektr.components, vektr.utilities`).
-- **`vektr-design-system/tailwind`**: Tailwind CSS theme extension preset.
+- **`vektr-design-system/reset.css`**: Standalone reset stylesheet for opt-in reset usage.
+- **`vektr-design-system/css/theme`**: Tailwind CSS v4 `@theme` extension stylesheet.
+- **`vektr-design-system/tailwind`**: Tailwind CSS v3 theme extension preset.
+- **`vektr-design-system/registry`**: Static shadcn-compatible component registry index.
 
 ---
 
