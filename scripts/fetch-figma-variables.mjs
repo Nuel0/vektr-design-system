@@ -8,12 +8,32 @@ const rootDir = path.resolve(__dirname, '..');
 
 const token = process.env.FIGMA_PERSONAL_ACCESS_TOKEN || process.env.FIGMA_TOKEN;
 const fileKey = process.env.FIGMA_FILE_KEY;
+const isCi = process.env.GITHUB_ACTIONS === 'true';
 
 if (!token || !fileKey) {
+  console.log('\n======================================================');
+  console.log('🔗 FIGMA SYNC STATUS: DORMANT (Secrets Unconfigured)');
+  console.log('======================================================');
   console.log('⚠️ Figma API credentials (FIGMA_PERSONAL_ACCESS_TOKEN & FIGMA_FILE_KEY) not present.');
-  console.log('ℹ️ Skipping live API fetch and using existing tokens.json.');
+  console.log('ℹ️ Skipping live API fetch and using existing local tokens.json.');
+  console.log('\n📋 HOW TO ACTIVATE FIGMA SYNC:');
+  console.log('  1. Open GitHub Repository -> Settings -> Secrets and variables -> Actions');
+  console.log('  2. Create secret FIGMA_PERSONAL_ACCESS_TOKEN (Figma PAT with Read scope)');
+  console.log('  3. Create secret FIGMA_FILE_KEY (Key extracted from Figma file URL)');
+
+  if (isCi) {
+    console.log('::warning::Figma API credentials missing. Daily sync workflow is running in DORMANT mode using cached tokens.json.');
+    console.log('::notice title=Figma Sync Status::FIGMA_SYNC_STATUS: DORMANT (Configure FIGMA_PERSONAL_ACCESS_TOKEN and FIGMA_FILE_KEY in repo secrets to enable live daily sync)');
+  }
   process.exit(0);
 }
+
+if (isCi) {
+  console.log('::notice title=Figma Sync Status::FIGMA_SYNC_STATUS: ACTIVE (Credentials verified. Querying live Figma REST API)');
+}
+console.log('\n======================================================');
+console.log('⚡ FIGMA SYNC STATUS: ACTIVE (Syncing live tokens)');
+console.log('======================================================');
 
 function rgbaToHex(r, g, b, a = 1) {
   const toHex = (n) => Math.round(n * 255).toString(16).padStart(2, '0').toUpperCase();
