@@ -31,6 +31,16 @@
         "default": "./dist/react/index.cjs"
       }
     },
+    "./icons": {
+      "import": {
+        "types": "./dist/icons/index.d.ts",
+        "default": "./dist/icons/index.js"
+      },
+      "require": {
+        "types": "./dist/icons/index.d.cts",
+        "default": "./dist/icons/index.cjs"
+      }
+    },
     "./css": "./dist/styles.css",
     "./css/theme": "./dist/css/theme.css",
     "./reset.css": "./dist/reset.css",
@@ -47,6 +57,9 @@
     "*": {
       "react": [
         "./dist/react/index.d.ts"
+      ],
+      "icons": [
+        "./dist/icons/index.d.ts"
       ]
     }
   },
