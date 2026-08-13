@@ -359,7 +359,7 @@ describe('Vektr 25-Component Unit & Accessibility Test Suite', () => {
 
   // 22. Skeleton
   it('22. Skeleton renders without accessibility violations', async () => {
-    const { container } = render(<Skeleton style={{ width: 100, height: 20 }} />);
+    const { container } = render(<Skeleton className="test-skeleton" />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
