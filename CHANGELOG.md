@@ -10,7 +10,7 @@
 
 ### Major Changes
 
-- TAdd React component library, fix broken build, add tests and CI
+- Add React component library, fix broken build, add tests and CI
 
 ### Patch Changes
 
