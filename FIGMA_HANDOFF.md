@@ -42,7 +42,7 @@ To ensure seamless automated sync between Figma / Tokens Studio and the `vektr-d
 
 ## 4. Automated Figma Variables REST API Sync Setup
 
-The repository features a scheduled GitHub Action ([.github/workflows/figma-sync.yml](file:///Users/MACBOOKPRO/Desktop/figma-design-tokens/.github/workflows/figma-sync.yml)) that queries Figma's REST API endpoint directly (`/v1/files/{file_key}/variables/local`), recompiles the 3-tier custom property CSS layer and shadcn registry items, runs the token contract gate, and automatically opens a Pull Request whenever Figma variables are modified!
+The repository features a scheduled GitHub Action ([.github/workflows/figma-sync.yml](.github/workflows/figma-sync.yml)) that queries Figma's REST API endpoint directly (`/v1/files/{file_key}/variables/local`), recompiles the 3-tier custom property CSS layer and shadcn registry items, runs the token contract gate, and automatically opens a Pull Request whenever Figma variables are modified!
 
 ### Setup GitHub Repository Secrets
 To enable live automated API fetching:

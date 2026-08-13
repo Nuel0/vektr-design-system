@@ -145,7 +145,7 @@ npm run release
 ```
 
 ### Automated GitHub CI Release Flow
-Pushing commits to `main` automatically triggers [.github/workflows/release.yml](file:///Users/MACBOOKPRO/Desktop/figma-design-tokens/.github/workflows/release.yml). Changesets automatically manages a **Release PR**. Merging the Release PR publishes the updated package to NPM with OIDC provenance (`npm publish --provenance --access public`).
+Pushing commits to `main` automatically triggers [.github/workflows/release.yml](.github/workflows/release.yml). Changesets automatically manages a **Release PR**. Merging the Release PR publishes the updated package to NPM with OIDC provenance (`npm publish --provenance --access public`).
 
 ---
 
