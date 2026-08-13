@@ -1439,8 +1439,10 @@ module.exports = {
   const tailwindDir = path.join(__dirname, 'dist/tailwind');
   if (!fs.existsSync(tailwindDir)) fs.mkdirSync(tailwindDir, { recursive: true });
   fs.writeFileSync(path.join(tailwindDir, 'preset.cjs'), tailwindPresetContent);
+  fs.writeFileSync(path.join(tailwindDir, 'preset.js'), tailwindPresetContent);
   const tailwindDtsContent = `/** @type {import('tailwindcss').Config} */\ndeclare const preset: Record<string, any>;\nexport = preset;\n`;
   fs.writeFileSync(path.join(tailwindDir, 'preset.d.cts'), tailwindDtsContent);
+  fs.writeFileSync(path.join(tailwindDir, 'preset.d.ts'), tailwindDtsContent);
 
   console.log('🎉 Successfully compiled Tokens Studio W3C DTCG tokens & VEKTR Typography styles across Light, Dark & Brand modes!');
 }
