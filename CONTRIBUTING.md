@@ -11,7 +11,7 @@ Thank you for your interest in contributing to the Vektr Design System!
 ### 2. Setup
 ```bash
 git clone https://github.com/Nuel0/vektr-design-system.git
-cd figma-design-tokens
+cd vektr-design-system
 npm install
 ```
 
