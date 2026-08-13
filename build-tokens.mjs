@@ -727,6 +727,95 @@ async function runBuild() {
   const combinedTokensCss = rootCss + '\n' + darkCss + '\n' + brandPaletteCss;
   fs.writeFileSync(baseCssPath, combinedTokensCss + '\n' + utilitiesCss);
 
+  // Emit standalone dist/reset.css
+  const resetCssContent = `/**
+ * Vektr Design System - Standalone Reset Stylesheet
+ */
+@layer vektr.reset {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+    line-height: 1.5;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--surface-base);
+    color: var(--text-primary);
+    font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading, system-ui, -apple-system, sans-serif);
+  }
+
+  a {
+    color: var(--action-primary);
+  }
+
+  ::selection {
+    background-color: var(--action-primary);
+    color: var(--text-inverse);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
+  }
+
+  button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+  }
+}
+`;
+  fs.writeFileSync(path.join(__dirname, 'dist/reset.css'), resetCssContent);
+
+  // Emit Tailwind v4 dist/css/theme.css with @theme block
+  const tailwindV4Css = `/**
+ * Vektr Design System - Tailwind CSS v4 Theme Extension
+ */
+@theme {
+  --color-brand-50: #EEF2FF;
+  --color-brand-100: #E0E7FF;
+  --color-brand-200: #C7D2FE;
+  --color-brand-300: #A5B4FC;
+  --color-brand-400: #818CF8;
+  --color-brand-500: #6366F1;
+  --color-brand-600: #4F46E5;
+  --color-brand-700: #4338CA;
+  --color-brand-800: #3730A3;
+  --color-brand-900: #312E81;
+  --color-neutral-50: #F8FAFC;
+  --color-neutral-100: #F1F5F9;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-400: #94A3B8;
+  --color-neutral-500: #64748B;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1E293B;
+  --color-neutral-900: #0F172A;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-brand: 8px;
+}
+`;
+  fs.writeFileSync(path.join(__dirname, 'dist/css/theme.css'), tailwindV4Css);
+
   // Emit dist/styles.css structured with CSS Cascade Layers (@layer)
   const stylesCssPath = path.join(__dirname, 'dist/styles.css');
   const unifiedStyles = `/**

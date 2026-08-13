@@ -119,6 +119,7 @@ __export(react_exports, {
   TooltipProvider: () => TooltipProvider,
   TooltipTrigger: () => TooltipTrigger,
   VektrProvider: () => VektrProvider,
+  themeScriptString: () => themeScriptString,
   useToast: () => useToast,
   useVektrTheme: () => useVektrTheme
 });
@@ -128,20 +129,52 @@ module.exports = __toCommonJS(react_exports);
 var import_react = require("react");
 var import_jsx_runtime = require("react/jsx-runtime");
 var VektrThemeContext = (0, import_react.createContext)(void 0);
+var themeScriptString = `(function() {
+  try {
+    var t = localStorage.getItem('vektr-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var b = localStorage.getItem('vektr-brand') || 'default';
+    document.documentElement.dataset.theme = t;
+    document.documentElement.dataset.brand = b;
+  } catch (e) {}
+})();`;
 var VektrProvider = ({
   children,
   defaultTheme = "light",
   defaultBrand = "default"
 }) => {
-  const [theme, setThemeState] = (0, import_react.useState)(defaultTheme);
-  const [brand, setBrandState] = (0, import_react.useState)(defaultBrand);
+  const [theme, setThemeState] = (0, import_react.useState)(() => {
+    if (typeof window !== "undefined") {
+      const domTheme = document.documentElement.dataset.theme;
+      if (domTheme) return domTheme;
+      const storedTheme = localStorage.getItem("vektr-theme");
+      if (storedTheme) return storedTheme;
+    }
+    return defaultTheme;
+  });
+  const [brand, setBrandState] = (0, import_react.useState)(() => {
+    if (typeof window !== "undefined") {
+      const domBrand = document.documentElement.dataset.brand;
+      if (domBrand) return domBrand;
+      const storedBrand = localStorage.getItem("vektr-brand");
+      if (storedBrand) return storedBrand;
+    }
+    return defaultBrand;
+  });
   (0, import_react.useEffect)(() => {
     const root = document.documentElement;
     root.setAttribute("data-theme", theme);
+    try {
+      localStorage.setItem("vektr-theme", theme);
+    } catch (e) {
+    }
   }, [theme]);
   (0, import_react.useEffect)(() => {
     const root = document.documentElement;
     root.setAttribute("data-brand", brand);
+    try {
+      localStorage.setItem("vektr-brand", brand);
+    } catch (e) {
+    }
   }, [brand]);
   const toggleTheme = () => {
     setThemeState((prev) => prev === "light" ? "dark" : "light");
@@ -1023,6 +1056,7 @@ BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
   TooltipProvider,
   TooltipTrigger,
   VektrProvider,
+  themeScriptString,
   useToast,
   useVektrTheme
 });

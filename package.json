@@ -32,6 +32,8 @@
       }
     },
     "./css": "./dist/styles.css",
+    "./css/theme": "./dist/css/theme.css",
+    "./reset.css": "./dist/reset.css",
     "./json": "./dist/json/tokens.json",
     "./typography": "./dist/json/typography.json",
     "./tailwind": {
