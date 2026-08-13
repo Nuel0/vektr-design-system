@@ -1,5 +1,11 @@
 # vektr-design-system
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated README documentation, component catalog, CSS theme exports, and repository setup.
+
 ## 2.0.0
 
 ### Major Changes

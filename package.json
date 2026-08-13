@@ -1,7 +1,7 @@
 {
   "name": "vektr-design-system",
   "type": "module",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Official design tokens, React components, and multi-theme presets for Vektr Design System",
   "main": "./dist/js/index.cjs",
   "module": "./dist/js/index.js",
