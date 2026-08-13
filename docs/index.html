@@ -42,23 +42,28 @@
       <h1 class="text-display-lg">Vektr Design System</h1>
       <p class="text-paragraph-lg" style="color: var(--text-secondary);">Interactive 25-Component Showcase & Token Testbed</p>
     </div>
-    <div class="controls">
-      <div>
-        <label class="vektr-label">Theme</label>
-        <select id="themeSelect" class="vektr-input">
-          <option value="light">Light Mode</option>
-          <option value="dark">Dark Mode</option>
-        </select>
-      </div>
-      <div>
-        <label class="vektr-label">Brand</label>
-        <select id="brandSelect" class="vektr-input">
-          <option value="default">Default Brand (Indigo)</option>
-          <option value="fintech">Fintech (Blue)</option>
-          <option value="health-tech">HealthTech (Teal)</option>
-          <option value="hospitality">Hospitality (Rose)</option>
-          <option value="edtech">EdTech (Amber)</option>
-        </select>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <a href="./storybook/" class="vektr-button" data-variant="primary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+        📚 Open Interactive Storybook
+      </a>
+      <div class="controls">
+        <div>
+          <label class="vektr-label">Theme</label>
+          <select id="themeSelect" class="vektr-input">
+            <option value="light">Light Mode</option>
+            <option value="dark">Dark Mode</option>
+          </select>
+        </div>
+        <div>
+          <label class="vektr-label">Brand</label>
+          <select id="brandSelect" class="vektr-input">
+            <option value="default">Default Brand (Indigo)</option>
+            <option value="fintech">Fintech (Blue)</option>
+            <option value="health-tech">HealthTech (Teal)</option>
+            <option value="hospitality">Hospitality (Rose)</option>
+            <option value="edtech">EdTech (Amber)</option>
+          </select>
+        </div>
       </div>
     </div>
   </header>

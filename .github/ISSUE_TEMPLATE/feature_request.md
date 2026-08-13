@@ -1,19 +1,19 @@
 ---
-name: Feature request
-about: Suggest an idea for Vektr Design System
-title: '[FEAT] '
+name: 🚀 Feature Request
+about: Suggest an idea or new component for Vektr Design System
+title: 'feat: '
 labels: 'enhancement'
 assignees: ''
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## Problem Statement
+Is your feature request related to a problem? Please describe clearly (e.g., "I'm always frustrated when...").
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+## Proposed Solution
+A clear and concise description of what you want to happen or what component/prop you'd like to see added.
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+## Alternatives Considered
+A description of any alternative solutions or features you've considered.
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+## Figma or Design Context (Optional)
+Link to Figma file or token reference if applicable.

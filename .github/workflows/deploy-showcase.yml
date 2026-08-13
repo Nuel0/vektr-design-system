@@ -39,6 +39,9 @@ jobs:
       - name: Copy Build Output into Showcase Folder
         run: cp -r dist docs/dist
 
+      - name: Build Storybook Static Site
+        run: npm run build-storybook
+
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
 

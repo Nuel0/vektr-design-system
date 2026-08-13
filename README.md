@@ -3,10 +3,12 @@
 > Official 3-Tier Design Tokens, React Component Library & Multi-Theme System.
 
 [![npm version](https://img.shields.io/npm/v/vektr-design-system.svg)](https://www.npmjs.com/package/vektr-design-system)
+[![Storybook](https://img.shields.io/badge/Storybook-Interactive_Docs-ff69b4.svg)](https://Nuel0.github.io/vektr-design-system/storybook/)
 [![Live Showcase](https://img.shields.io/badge/Live_Showcase-GitHub_Pages-blue.svg)](https://Nuel0.github.io/vektr-design-system/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-🌐 **Live Interactive Showcase**: [https://Nuel0.github.io/vektr-design-system/](https://Nuel0.github.io/vektr-design-system/)
+📚 **Interactive Storybook Explorer**: [https://Nuel0.github.io/vektr-design-system/storybook/](https://Nuel0.github.io/vektr-design-system/storybook/)  
+🌐 **25-Component Showcase Matrix**: [https://Nuel0.github.io/vektr-design-system/](https://Nuel0.github.io/vektr-design-system/)
 
 ---
 

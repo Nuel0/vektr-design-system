@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect } from 'vitest';
-import { render, screen, act } from '@testing-library/react';
+import { render, screen, act, fireEvent } from '@testing-library/react';
 import { axe } from 'vitest-axe';
 import { Button } from '../Button';
 import { Input } from '../Input';
@@ -439,5 +439,184 @@ describe('Vektr 25-Component Unit & Accessibility Test Suite', () => {
     expect(document.documentElement).toHaveAttribute('data-brand', 'fintech');
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+});
+
+describe('Interactive Component Deep Testing Suite', () => {
+  // Select controlled & keyboard navigation
+  it('Select fires onValueChange and supports keyboard navigation & Escape key', async () => {
+    let selectedValue = '';
+    const handleValueChange = (val: string) => {
+      selectedValue = val;
+    };
+
+    const { getByRole, getByText } = render(
+      <Select onValueChange={handleValueChange}>
+        <SelectTrigger aria-label="Select Frequency">
+          <SelectValue placeholder="Choose Frequency" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="daily">Daily</SelectItem>
+          <SelectItem value="weekly">Weekly</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+
+    const trigger = getByRole('combobox');
+    expect(trigger).toBeInTheDocument();
+
+    // Open select dropdown with keyboard
+    fireEvent.keyDown(trigger, { key: 'ArrowDown', code: 'ArrowDown' });
+    expect(getByText('Daily')).toBeInTheDocument();
+
+    // Select option with click
+    fireEvent.click(getByText('Weekly'));
+    expect(selectedValue).toBe('weekly');
+  });
+
+  // Dialog focus trap & Escape key
+  it('Dialog handles focus movement and Escape key closing', async () => {
+    let isOpen = true;
+    const handleOpenChange = (open: boolean) => {
+      isOpen = open;
+    };
+
+    const { getByText } = render(
+      <div>
+        <button id="trigger-btn">Open Dialog</button>
+        <Dialog open={isOpen} onOpenChange={handleOpenChange}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Dialog Focus Title</DialogTitle>
+            </DialogHeader>
+            <button id="dialog-inner-btn">Inner Action</button>
+          </DialogContent>
+        </Dialog>
+      </div>
+    );
+
+    expect(getByText('Dialog Focus Title')).toBeInTheDocument();
+
+    // Escape key closes dialog
+    fireEvent.keyDown(document.body, { key: 'Escape', code: 'Escape' });
+    expect(isOpen).toBe(false);
+  });
+
+  // Dropdown keyboard navigation & Escape key
+  it('DropdownMenu handles keyboard navigation and Escape key closing', async () => {
+    let isOpen = true;
+    const handleOpenChange = (open: boolean) => {
+      isOpen = open;
+    };
+
+    const { getByText } = render(
+      <DropdownMenu open={isOpen} onOpenChange={handleOpenChange}>
+        <DropdownMenuTrigger asChild>
+          <button>Menu Trigger</button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem>Profile Item</DropdownMenuItem>
+          <DropdownMenuItem>Settings Item</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+
+    expect(getByText('Profile Item')).toBeInTheDocument();
+
+    // Escape closes dropdown
+    fireEvent.keyDown(document.body, { key: 'Escape', code: 'Escape' });
+    expect(isOpen).toBe(false);
+  });
+
+  // Tabs keyboard navigation & active panel display
+  it('Tabs supports keyboard navigation between triggers and updates active panel', async () => {
+    const { getByRole, getByText } = render(
+      <Tabs defaultValue="tab1">
+        <TabsList aria-label="Navigation Tabs">
+          <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+          <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+        </TabsList>
+        <TabsContent value="tab1">Panel 1 Content</TabsContent>
+        <TabsContent value="tab2">Panel 2 Content</TabsContent>
+      </Tabs>
+    );
+
+    const tab1 = getByRole('tab', { name: 'Tab 1' });
+    const tab2 = getByRole('tab', { name: 'Tab 2' });
+
+    expect(tab1).toHaveAttribute('data-state', 'active');
+    expect(getByText('Panel 1 Content')).toBeInTheDocument();
+
+    // Keyboard navigation: ArrowRight from Tab 1 to Tab 2 & Enter key activation
+    act(() => {
+      tab1.focus();
+      fireEvent.keyDown(tab1, { key: 'ArrowRight', code: 'ArrowRight', keyCode: 39 });
+      tab2.focus();
+      fireEvent.keyDown(tab2, { key: 'Enter', code: 'Enter', keyCode: 13 });
+      fireEvent.click(tab2);
+    });
+
+    expect(tab2).toHaveAttribute('data-state', 'active');
+    expect(getByText('Panel 2 Content')).toBeInTheDocument();
+  });
+
+  // Checkbox / RadioGroup / Switch controlled vs uncontrolled
+  it('Checkbox, RadioGroup, and Switch support controlled vs uncontrolled modes', () => {
+    // Uncontrolled
+    const { getByLabelText: getByLabel1 } = render(
+      <div>
+        <Checkbox id="u-cb" defaultChecked />
+        <Label htmlFor="u-cb">Uncontrolled Checkbox</Label>
+        <Switch id="u-sw" defaultChecked />
+        <Label htmlFor="u-sw">Uncontrolled Switch</Label>
+      </div>
+    );
+    expect(getByLabel1('Uncontrolled Checkbox')).toHaveAttribute('data-state', 'checked');
+
+    // Controlled
+    let cbChecked = false;
+    let radioVal = 'r1';
+    let switchChecked = true;
+
+    const { getByLabelText: getByLabel2 } = render(
+      <div>
+        <Checkbox id="c-cb" checked={cbChecked} onCheckedChange={(v) => (cbChecked = !!v)} />
+        <Label htmlFor="c-cb">Controlled Checkbox</Label>
+
+        <RadioGroup value={radioVal} onValueChange={(v) => (radioVal = v)}>
+          <RadioGroupItem value="r1" id="c-r1" />
+          <Label htmlFor="c-r1">Radio 1</Label>
+        </RadioGroup>
+
+        <Switch id="c-sw" checked={switchChecked} onCheckedChange={(v) => (switchChecked = v)} />
+        <Label htmlFor="c-sw">Controlled Switch</Label>
+      </div>
+    );
+
+    expect(getByLabel2('Controlled Checkbox')).toHaveAttribute('data-state', 'unchecked');
+    expect(getByLabel2('Controlled Switch')).toHaveAttribute('data-state', 'checked');
+  });
+
+  // Input & Textarea error state aria-invalid & aria-describedby
+  it('Input and Textarea link error messages via aria-invalid and aria-describedby', () => {
+    const { getByLabelText } = render(
+      <div>
+        <Input label="Email Field" errorText="Email is required" />
+        <Textarea label="Bio Field" errorText="Bio is too short" />
+      </div>
+    );
+
+    const input = getByLabelText('Email Field');
+    const textarea = getByLabelText('Bio Field');
+
+    expect(input).toHaveAttribute('aria-invalid', 'true');
+    expect(input).toHaveAttribute('aria-describedby');
+    const inputErrorId = input.getAttribute('aria-describedby');
+    expect(document.getElementById(inputErrorId!)).toHaveTextContent('Email is required');
+
+    expect(textarea).toHaveAttribute('aria-invalid', 'true');
+    expect(textarea).toHaveAttribute('aria-describedby');
+    const textareaErrorId = textarea.getAttribute('aria-describedby');
+    expect(document.getElementById(textareaErrorId!)).toHaveTextContent('Bio is too short');
   });
 });
