@@ -3,7 +3,10 @@
 > Official 3-Tier Design Tokens, React Component Library & Multi-Theme System.
 
 [![npm version](https://img.shields.io/npm/v/vektr-design-system.svg)](https://www.npmjs.com/package/vektr-design-system)
+[![Live Showcase](https://img.shields.io/badge/Live_Showcase-GitHub_Pages-blue.svg)](https://Nuel0.github.io/vektr-design-system/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+🌐 **Live Interactive Showcase**: [https://Nuel0.github.io/vektr-design-system/](https://Nuel0.github.io/vektr-design-system/)
 
 ---
 
@@ -59,6 +62,27 @@ export function UserDashboard() {
         </Button>
       </CardBody>
     </Card>
+  );
+}
+```
+
+### 6. Using Phosphor Icons with Components
+Vektr bundles Phosphor icons natively so slot props like `leftIcon` and `rightIcon` work out-of-the-box:
+
+```tsx
+import React from 'react';
+import { Button } from 'vektr-design-system/react';
+import { ArrowRight, CheckCircle } from 'vektr-design-system/icons';
+
+export function ActionButtons() {
+  return (
+    <Button
+      variant="primary"
+      leftIcon={<CheckCircle size={18} />}
+      rightIcon={<ArrowRight size={18} />}
+    >
+      Complete Setup
+    </Button>
   );
 }
 ```

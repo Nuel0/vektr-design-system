@@ -28,6 +28,21 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Verify Figma API Secrets Status
+        env:
+          FIGMA_PERSONAL_ACCESS_TOKEN: ${{ secrets.FIGMA_PERSONAL_ACCESS_TOKEN }}
+          FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
+        run: |
+          if [ -n "$FIGMA_PERSONAL_ACCESS_TOKEN" ] && [ -n "$FIGMA_FILE_KEY" ]; then
+            echo "### ⚡ Figma Sync Status: **ACTIVE**" >> $GITHUB_STEP_SUMMARY
+            echo "Figma credentials (FIGMA_PERSONAL_ACCESS_TOKEN & FIGMA_FILE_KEY) are configured." >> $GITHUB_STEP_SUMMARY
+            echo "STATUS=ACTIVE" >> $GITHUB_ENV
+          else
+            echo "### ⚠️ Figma Sync Status: **DORMANT**" >> $GITHUB_STEP_SUMMARY
+            echo "Figma credentials (FIGMA_PERSONAL_ACCESS_TOKEN and/or FIGMA_FILE_KEY) are missing in repository secrets." >> $GITHUB_STEP_SUMMARY
+            echo "STATUS=DORMANT" >> $GITHUB_ENV
+          fi
+
       - name: Fetch Figma Variables via REST API
         env:
           FIGMA_PERSONAL_ACCESS_TOKEN: ${{ secrets.FIGMA_PERSONAL_ACCESS_TOKEN }}
